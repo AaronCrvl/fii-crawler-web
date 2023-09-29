@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+# 📈fiiCrawlerWeb
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta aplicação está sendo feita com muito carinho para todos que assim como eu investem em FII's e gostariam de gerenciar seus investimentos e acompanhar os dados de sua carteira.
 
-## Available Scripts
+Neste projeto tenho dado enfoque para o UX e UI, também trabalho conceitos da web e transmissão de informações entre aplicações via api. O projeto do back end desta aplicação pode ser encontrado [aqui](https://github.com/AaronCrvl/FIICrawler-backend).
 
-In the project directory, you can run:
+## 🧪 Tecnologias
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-### `npm start`
+- [React JS](https://pt-br.legacy.reactjs.org/)
+- [Tyepscript](https://www.typescriptlang.org/)
+- [ECharts](https://echarts.apache.org/en/index.html)
+- [Axios](https://axios-http.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 💤 Iniciando a Aplicação
+Basta rodar o comando abaixo no terminal.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+``` javascript
+npm start dev
+``` 
