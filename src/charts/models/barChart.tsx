@@ -1,7 +1,8 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import ReactEcharts from "echarts-for-react"; 
 
 interface BarChartProps {
+    cssProps : CSSProperties,
     option : {
         xAxis : {
             type : string,
@@ -19,6 +20,6 @@ interface BarChartProps {
     }
 }
 
-export default function BarChart({option} : BarChartProps) {       
-    return <ReactEcharts option={option} />;        
+export default function BarChart({option, cssProps} : BarChartProps) {       
+    return <ReactEcharts option={option} style={cssProps}/>;        
 }

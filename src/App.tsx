@@ -9,14 +9,14 @@ function App() {
   const router = new AppRouter().mapRoutes()
 
   return (    
-    <div className='App w-full h-full bg-sky-700'>   
+    <div className='App w-auto h-screen bg-sky-800 font-gabarito antialiased'>   
       <div className='flex'>        
-        <BrowserRouter>
-          <div className='p-1'>
-            <Nav />   
-          </div>
-        </BrowserRouter>      
-        <RouterProvider router={router} />      
+        <BrowserRouter>          
+          <Nav />             
+        </BrowserRouter>  
+        <div className='p-2'>
+          <RouterProvider router={router} />      
+        </div>    
       </div>
     </div>    
   )

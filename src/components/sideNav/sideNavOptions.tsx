@@ -12,19 +12,19 @@ interface sideNavOptionsProps {
     navBarExtraOptions : Array<navbarOption>    
 }
 
-function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) {    
+function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) : JSX.Element {    
     // Hooks --------------------------->
     const [selectedTab, setSelectedTab] = React.useState<Location>(window.location)
 
-    // Functions --------------------------->
-    function Option (option : navbarOption) {
+    // Jsx Elements --------------------------->
+    function Option ({optionText, optionIcon, urlPath} : navbarOption) {
         return (
-            <li key={'Option_' + Math.random()} className="flex ml-0 mb-10 hover:opacity-100 hover:cursor-pointer">
-                {selectedTab.pathname == option.urlPath && <div className="rounded-full bg-white mr-1 text-white font-bold text-4xl">{`>`}</div>}
-                <div className={selectedTab.pathname == option.urlPath ? 'flex opacity-100 p-5' : 'flex opacity-50 p-5'}>                                    
-                    <img alt='optionIcon' className="invert w-12 h-12 mr-1" src={option.optionIcon}/>
-                    <a href={option.urlPath} onClick={()=> setSelectedTab(window.location)}>
-                        <p className="text-white font-bold text-4xl text-left">{option.optionText}</p>
+            <li key={'Option_' + Math.random()} className={`flex mb-5 ${selectedTab.pathname === urlPath ? 'opacity-100' : 'opacity-25'} hover:opacity-100 hover:cursor-pointer hover:scale-110`}>
+                {selectedTab.pathname === urlPath && <div className="rounded-full bg-white text-white font-bold text-4xl">{`<`}</div>}
+                <div className='flex p-5'>                                    
+                    <img alt='optionIcon' className={selectedTab.pathname === urlPath ? 'invert w-12 h-12 mr-3 ml-0' : 'w-12 h-12 mr-3 ml-5'} src={optionIcon.toString()}/>
+                    <a href={urlPath} onClick={()=> setSelectedTab(window.location)} className={selectedTab.pathname === urlPath ? 'ml-0' : 'ml-5'} >
+                        <p className="text-white font-bold text-4xl text-left">{optionText}</p>
                     </a>
                 </div>
             </li>   

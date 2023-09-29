@@ -6,7 +6,7 @@ interface sideNavRootProps {
 
 export default function SideNavRoot(props : sideNavRootProps) {    
     return(
-        <div className="bg-sky-700 w-fit h-screen">
+        <div className="bg-sky-800 w-fit h-full">
             {props.children}
         </div>
     )

@@ -18,3 +18,6 @@ Basta rodar o comando abaixo no terminal.
 ``` javascript
 npm start dev
 ``` 
+
+## 💤 Figma Desgina
+[Acesse aqui](https://www.figma.com/file/I9ozKQR2ZKyoYaEok98dCv/fiiCrawler-Desgin?type=design&node-id=0%3A1&mode=design&t=LCA1aW1Sl9mfIO8l-1)
