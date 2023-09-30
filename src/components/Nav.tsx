@@ -8,7 +8,7 @@ const sideNavOptions : typeof SideNavOptions.prototype = [
       urlPath : '/'
     },
     {
-      optionText : `Meus Fii's`,
+      optionText : `Minha Carteira`,
       optionIcon : require('../assets/icons/meuFIIIcon.png'),
       urlPath : '/meusfiis'
     }

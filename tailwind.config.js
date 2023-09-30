@@ -9,7 +9,8 @@ module.exports = {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
         'dmSans': ['DM Sans', 'sans-serif'],
-        'gabarito': ['Gabarito', 'sans-serif']
+        'gabarito': ['Gabarito', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif']
       },
     },
   },

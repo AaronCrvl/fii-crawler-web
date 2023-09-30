@@ -1,4 +1,4 @@
-export interface FIIType {
+export interface FIIType {    
     nome : string,
     ultimoRedimentoRS : string,
     ultimosRedimento : string,

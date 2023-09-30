@@ -1,6 +1,6 @@
 import React from 'react';
 
-const dataJson = [
+const dataJson_Fii = [
   {
     "nome": "AAGR11",
     "ultimoRedimentoRS": "N/A",
@@ -5453,21 +5453,110 @@ const dataJson = [
   }
 ]
 
+const dataJson_FiiDetalhado = [
+  {
+    "userId" :  "User1",
+    "codigoFii": "tepp11",
+    "nomeCompleto": "TELLUS PROPERTIES - FDO INV. IMO",
+    "cota": "R$ 91,31",
+    "variacao": "- 0,10%",
+    "valorizacao": "15",
+    "historicoDividendos": [
+      {
+        "dataBase" : "2021/09/30",
+        "qtdCotas" : "5",
+        "dataPagamento" : "2023/09/05",
+        "cotacaoBase" : "130,65",
+        "dividendoYeild" : "1,20",
+        "rendimento" : "0,50",
+      },
+      {
+        "dataBase" : "2022/09/30",
+        "dataPagamento" : "2023/09/05",
+        "cotacaoBase" : "127,65",
+        "dividendoYeild" : "1,20",
+        "rendimento" : "0,50",
+      },
+      {
+        "dataBase" : "2023/07/05",
+        "dataPagamento" : "2023/07/05",
+        "cotacaoBase" : "134,32",
+        "dividendoYeild" : "0,20",
+        "rendimento" : "0,70",
+      },
+    ],
+    "administrador": {      
+      "cnpj" : "11.026.627/0001-38",    
+      "segmento" : "Fundo de Fundos",
+    },    
+  },
+  {
+    "userId" :  "User1",
+    "codigoFii": "bcff11",
+    "nomeCompleto": "BTG PACTUAL - FDO INV. IMO",
+    "cota": "R$ 132,31",
+    "variacao": "- 0,10%",
+    "valorizacao": "15",
+    "historicoDividendos": [
+      {
+        "dataBase" : "2021/09/30",
+        "dataPagamento" : "2021/09/05",
+        "cotacaoBase" : "77,65",
+        "dividendoYeild" : "1,20",
+        "rendimento" : "0,50",
+      },
+      {
+        "dataBase" : "2022/05/30",
+        "dataPagamento" : "2023/09/05",
+        "cotacaoBase" : "84,65",
+        "dividendoYeild" : "1,20",
+        "rendimento" : "0,50",
+      },
+      {
+        "dataBase" : "2023/09/30",
+        "dataPagamento" : "2023/09/05",
+        "cotacaoBase" : "78,65",
+        "dividendoYeild" : "1,20",
+        "rendimento" : "0,50",
+      },
+    ],
+    "administrador": {      
+      "cnpj" : "11.026.627/0001-38",    
+      "segmento" : "Fundo de Fundos",
+    },    
+  }
+]
+
 class FIIApi {
-    getFiiList() : Promise<Response> {
-        return new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                resolve(
-                    new Response(JSON.stringify(dataJson), {
-                        status: 200, // Ok
-                        headers: {
-                            "Content-Type": "application/json; utf-8",
-                        },
-                    })
-                )
-            }, 2000) // atraso de 2 segundos
-        })
-    }
+  public getFIIList() : Promise<Response> {
+    return new Promise((resolve, reject) => {
+        setTimeout(()=> {
+            resolve(
+                new Response(JSON.stringify(dataJson_Fii), {
+                    status: 200, // Ok
+                    headers: {
+                        "Content-Type": "application/json; utf-8",
+                    },
+                })
+            )
+        }, 2000) // simular atraso de 2 segundos
+    })
+  }
+
+  public getListaFIIUsuario(userId : string) : Promise<Response> {
+    return new Promise((resolve, reject) => {
+        setTimeout(()=> {
+            resolve(
+                new Response(JSON.stringify(dataJson_FiiDetalhado), {
+                    status: 200, // Ok
+                    headers: {
+                        "Content-Type": "application/json; utf-8",
+                    },
+                })
+            )
+        }, 2000) // simular atraso de 2 segundos
+    })
+}
 }
 
 export default FIIApi;
