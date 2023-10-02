@@ -8,7 +8,8 @@ Neste projeto tenho dado enfoque para o UX e UI, também trabalho conceitos da w
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 - [React JS](https://pt-br.legacy.reactjs.org/)
-- [Tyepscript](https://www.typescriptlang.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [ECharts](https://echarts.apache.org/en/index.html)
 - [Axios](https://axios-http.com/)
 
