@@ -24,7 +24,10 @@ export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDivi
                     {lista && 
                         camposCabecalho.map(campo => {
                             return (
-                                <th className="p-2">{campo}</th>
+                                <th 
+                                    key={Math.random()}
+                                    className="p-2"
+                                >{campo}</th>
                             )
                         })
                     }                

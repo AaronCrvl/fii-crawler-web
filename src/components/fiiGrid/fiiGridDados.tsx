@@ -52,7 +52,9 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                 {fiis && 
                                     camposCabecalhoFIIType.map(campo => {
                                         return (
-                                            <th>{campo}</th>
+                                            <th
+                                                key={Math.random()}
+                                            >{campo}</th>
                                         )
                                     })
                                 }                
@@ -64,7 +66,10 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                     // casting array
                                     let fii = fundo as FIIType
                                     return (
-                                        <tr className="opacity-70 hover:opacity-100 hover:font-bold roudend-lg">                            
+                                        <tr 
+                                            key={Math.random()} 
+                                            className="opacity-70 hover:opacity-100 hover:font-bold roudend-lg"
+                                        >                            
                                             <div className="btn border-2 p-1">
                                                 <img 
                                                     alt='adicionar a carteira' 
@@ -96,7 +101,9 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                 {fiis && 
                                     camposCabecalhoFIIDetalhadoType.map(campo => {
                                         return (
-                                            <th>{campo}</th>
+                                            <th
+                                                key={Math.random()}
+                                            >{campo}</th>
                                         )
                                     })
                                 }                
@@ -109,8 +116,10 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                     let fii = fundo as FIIDetalhadoType
                                     return (
                                         <tr 
+                                            key={Math.random()} 
                                             onClick={callback(fii.codigoFii)}
-                                            className="opacity-70 hover:opacity-100 hover:font-bold roudend-lg">                                                                   
+                                            className="opacity-70 hover:opacity-100 hover:font-bold roudend-lg"
+                                        >                                                                   
                                             {util.linhaGrid(fii.codigoFii)}                            
                                             {util.linhaGrid(fii.nomeCompleto)}                            
                                             {util.linhaGrid(fii.cota)}                            

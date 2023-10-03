@@ -5459,8 +5459,8 @@ const dataJson_FiiDetalhado = [
     "codigoFii": "tepp11",
     "nomeCompleto": "TELLUS PROPERTIES - FDO INV. IMO",
     "cota": "R$ 91,31",
-    "variacao": "- 0,10%",
-    "valorizacao": "15",
+    "variacao": "+ 0,10%",
+    "valorizacao": "1,27%",
     "historicoDividendos": [
       {
         "dataBase" : "2021/09/30",
@@ -5496,7 +5496,7 @@ const dataJson_FiiDetalhado = [
     "nomeCompleto": "BTG PACTUAL - FDO INV. IMO",
     "cota": "R$ 132,31",
     "variacao": "- 0,10%",
-    "valorizacao": "15",
+    "valorizacao": "1,27%",
     "historicoDividendos": [
       {
         "dataBase" : "2021/09/30",

@@ -7,6 +7,9 @@ import { FIIGrid } from "../components/fiiGrid";
 import FuncoesDeComparacao from "../utils/funcoesDeComparacao";
 import Carregando from "../components/carregando";
 import FuncoesDeElementosDOM from "../utils/funcoesDeElementosDOM";
+import PieChartCotaConfig from "../charts/configuracoes/pieChartCotaConfig";
+import BarChartRendimentoMedioConfig from "../charts/configuracoes/barChartRendimentoMedioConfig";
+import BarChartUltimosRendimentoConfig from "../charts/configuracoes/BarChartUltimosRendimentoConfig";
 
 function Dashboard() {           
     const util_FuncoesComparacao = new FuncoesDeComparacao()
@@ -32,138 +35,7 @@ function Dashboard() {
                 }              
             })
         }        
-    }, dadosFII)
-
-    // Chart Config --------------------------->
-    const BarChartUltimosRendimento : typeof BarChart.prototype = {
-        cssProps : {
-            width: '1000px', height: '300px'
-        },
-        option : {
-            xAxis: {
-                type: 'category',
-                data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoValor)
-                .map(fii => {return fii.nome}).slice(0,15)
-            },
-            yAxis: {   
-                type: 'value',
-                data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoValor)
-                .map(fii => {return fii.ultimosRedimento}).slice(0,15)
-            },
-            series: [
-                {
-                    type: 'bar',
-                    data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoValor)                    
-                    .map(fii => {
-                        return {
-                            value: fii.ultimoRedimentoRS === 'N/A' ? 
-                            Number.parseFloat('0,00') : Number.parseFloat(fii.ultimoRedimentoRS),
-
-                            itemStyle: {
-                                color: '#3498DB',
-                                shadowColor: '#3498DB',     
-                                opacity: 0.5                                                           
-                            },
-                        }
-                    })
-                    .slice(0, 15),
-                    showBackground: true,
-                    backgroundStyle: {
-                        color: 'rgba(220, 220, 220, 0.8)'
-                    },
-                    barWidth: '30%',                                                                        
-                },
-                {
-                    type: 'bar',
-                    data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoValor)                    
-                    .map(fii => {
-                        return {
-                            value: fii.ultimosRedimento === 'N/A' ? 
-                            0 : Number.parseFloat(fii.ultimosRedimento),
-
-                            itemStyle: {
-                                color: '#1B4F72',
-                                shadowColor: '#1B4F72',                                
-                                opacity: 0.5
-                            },
-                        }
-                    })
-                    .slice(0, 15),
-                    showBackground: true,
-                    backgroundStyle: {
-                        color: 'rgba(220, 220, 220, 0.8)'
-                    },
-                    barWidth: '30%',                    
-                },                
-            ]
-        }
-    }
-
-    const BarChartRendimentoMedioAnual : typeof BarChart.prototype = {
-        cssProps : {
-            width: '1000px', height: '300px'
-        },
-        option : {
-            xAxis: {
-                type: 'category',
-                data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoMedioAnual)
-                .map(fii => {return fii.nome}).slice(0,30)
-            },
-            yAxis: {   
-                type: 'value',
-                data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoMedioAnual)
-                .map(fii => {return fii.rendimentoMedioAnual}).slice(0,10)
-            },
-            series: [
-                {
-                    type: 'bar',
-                    data: dadosFII?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoMedioAnual)
-                    .map(fii => {
-                        return {
-                            value: fii.rendimentoMedioAnual === 'N/A' ? 
-                            Number.parseFloat('0,00') : Number.parseFloat(fii.rendimentoMedioAnual),
-
-                            itemStyle: {
-                                color: '#8E44AD',
-                                shadowColor: '#8E44AD',     
-                                opacity: 0.5                                                           
-                            },
-                        }
-                    })
-                    .slice(0,30),
-                    showBackground: true,
-                    backgroundStyle: {
-                        color: 'rgba(220, 220, 220, 0.8)'
-                    },
-                    barWidth: '50%',                                
-                }
-            ]
-        }
-    }
-
-    const PieChartCota : typeof PieChart.prototype = {    
-        cssProps : {
-            width: '800px', height: '600px'
-        },
-        option : {    
-            series: [
-                {
-                    type: 'pie',
-                    radius : '70%',                        
-                    data: dadosFII?.sort((a : FIIType, b : FIIType) => {
-                        return Number.parseFloat(a.cota) -  Number.parseFloat(b.cota)
-                    }).map(fii => {
-                        return {
-                            name : `${fii.nome} - ${fii.cota}` ,
-                            value : fii.cota === 'N/A' ? 
-                            Number.parseFloat('0,00') : Number.parseFloat(fii.cota)
-                        }
-                    })
-                    .slice(0,50)
-                }
-            ]       
-        } 
-    }
+    }, dadosFII)       
 
     // Functions --------------------------->
     const atualizarDados = () => setDadosFII(undefined)       
@@ -183,14 +55,14 @@ function Dashboard() {
                         />
                     }
                     {/* Ícone de Caregando */}
-                    {!dadosFII && Carregando()}
+                    {!dadosFII && <Carregando />}
                     {/* Gráficos */}      
                     <div className="flex">                    
                         {/* Pie Chart                                                 */}
                         {dadosFII && 
                             <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
                                 {util_FuncoesDOM.tituloDeGrafico('Valor da Cota - Top 50')}
-                                <PieChart option={PieChartCota.option} cssProps={PieChartCota.cssProps} />
+                                <PieChart option={PieChartCotaConfig(dadosFII).option} cssProps={PieChartCotaConfig(dadosFII).cssProps} />
                             </div>
                         }                    
                         {/* Bar Charts                                                 */}
@@ -199,14 +71,14 @@ function Dashboard() {
                             {dadosFII && 
                                 <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
                                     {util_FuncoesDOM.tituloDeGrafico('Últimos Rendimentos - R$ & %')}
-                                    <BarChart option={BarChartUltimosRendimento.option} cssProps={BarChartUltimosRendimento.cssProps}/>
+                                    <BarChart option={BarChartRendimentoMedioConfig(dadosFII).option} cssProps={BarChartRendimentoMedioConfig(dadosFII).cssProps}/>
                                 </div>
                             } 
                             {/* Bar Chart 2 */}
                             {dadosFII && 
                                 <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
                                     {util_FuncoesDOM.tituloDeGrafico('Rendimento Médio Anual')}                                    
-                                    <BarChart option={BarChartRendimentoMedioAnual.option} cssProps={BarChartRendimentoMedioAnual.cssProps}/>
+                                    <BarChart option={BarChartUltimosRendimentoConfig(dadosFII).option} cssProps={BarChartUltimosRendimentoConfig(dadosFII).cssProps}/>
                                 </div>
                             } 
                         </div>

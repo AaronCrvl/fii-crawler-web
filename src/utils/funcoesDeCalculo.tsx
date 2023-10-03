@@ -7,6 +7,9 @@ export default class FuncoesDeCalculo {
     
     // Funções Privadas    
     cotaRecalculada(valorCota: number, rendimentoAnalisado : number) : number {
+        console.log(`cota = ${valorCota}`)
+        console.log(`rendimentoAnalisado = ${rendimentoAnalisado}`)
+        console.log(`Valor cota * rendimento = ${valorCota*rendimentoAnalisado}`)
         return valorCota*rendimentoAnalisado
     }       
     
@@ -26,7 +29,7 @@ export default class FuncoesDeCalculo {
     public calcularSaldoCarteira (fundos : FIIDetalhadoType[]) : number {                
         let valorCalculado : number = 0.00
         fundos.forEach((fii : FIIDetalhadoType) => {
-            let valorCota = Number.parseFloat(fii.cota)
+            let valorCota = Number.parseFloat(fii.cota.replace('R$', ''))
             let valorizacao = Number.parseFloat(fii.valorizacao)            
             let qtdCotas = Number.parseInt(fii.qtdCotas)
             

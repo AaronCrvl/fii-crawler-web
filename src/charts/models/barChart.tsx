@@ -1,22 +1,35 @@
 import React, { CSSProperties } from "react";
 import ReactEcharts from "echarts-for-react"; 
+import { FIIType } from "../../interfaces/FIIType";
 
 interface BarChartProps {
     cssProps : CSSProperties,
     option : {
         xAxis : {
             type : string,
-            data : Array<string>
+            data : string[]
         },
         yAxis: {
             type: string,
+            data : string[],
         },
-        series: [
+        series: 
             {
-                data: Array<Number>,
+                data: {
+                    value : string | number,
+                    itemStyle : {
+                        color : string,
+                        shadowColor : string,
+                        opacity : number,
+                    }
+                }[],
                 type: string,
-            }
-        ]
+                showBackground : Boolean,
+                backgroundStyle : {
+                    color : string
+                },
+                barWidth : string,
+            }[]        
     }
 }
 

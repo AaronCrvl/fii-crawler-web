@@ -1,12 +1,12 @@
 import React from "react";
 
 interface CarteiraProps {
-    valor : number,
+    valor : string | number,
 }
 
 function Carteira({valor} : CarteiraProps) {
     // Hooks --------------------------->
-    const [valorState, setValorState] = React.useState<number>()
+    const [valorState, setValorState] = React.useState<number | string>()
     React.useEffect(()=> {
         if( // Caso tenha atualização no valor ou seja indefinido
             valorState === undefined
@@ -27,10 +27,10 @@ function Carteira({valor} : CarteiraProps) {
                 />            
                 <div>
                     {valorState && 
-                        <p className="flex mt-1 left text-sky-700 font-bold w-full">
+                        <div className="flex mt-1 left text-sky-700 font-bold w-full">
                             <div style={{fontSize:'100px', marginRight: '20px', marginLeft: '15px'}}>R$</div>
                             <div style={{fontSize:'100px'}}>{valorState}</div>
-                        </p>
+                        </div>
                     }
                 </div>
             </div>

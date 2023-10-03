@@ -2,19 +2,19 @@ import React, { CSSProperties } from "react";
 import ReactEcharts from "echarts-for-react"; 
 
 interface PieChartItem {
-  value : Number,
+  value : number,
   name : string,
 }
 
 interface PieChartProps {
   cssProps : CSSProperties,
   option : {
-    series: [
+    series: 
       {
         type: string,
-        data:Array<PieChartItem>,
-      }
-    ]
+        radius : string,
+        data: Array<PieChartItem>,
+      }[]
   }
 }
 

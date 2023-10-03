@@ -1,6 +1,10 @@
-export default function Carregando() {
+interface CarregandoProps {
+    style?: string
+}
+
+export default function Carregando({style} : CarregandoProps) {
     return(
-        <div className="w-full h-full px-96">
+        <div className={style? style : "w-full h-full px-96"}>
             <button disabled>
                 <img 
                     alt='loading...' 

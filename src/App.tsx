@@ -14,7 +14,7 @@ function App() {
         <BrowserRouter>          
           <Nav />             
         </BrowserRouter>  
-        <div className='p-2'>
+        <div className='p-2 w-full h-full'>
           <RouterProvider router={router} />      
         </div>    
       </div>
