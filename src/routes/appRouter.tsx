@@ -5,7 +5,7 @@ import Dashboard from "../pages/dashboard";
 import MeusFIIs from "../pages/meusFIIs";
 import Login from "../pages/login";
 import PaginaInicial from "../pages/paginaInicial";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 
 export default class AppRouter {
   public mapRoutes() : any {

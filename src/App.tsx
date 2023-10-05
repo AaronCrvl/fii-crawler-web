@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import AppRouter from './routes/appRouter';
 import { RouterProvider } from 'react-router-dom';
-import Nav from './components/nav';
+import Nav from './components/Nav';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/dashboard';
 import MeusFIIs from './pages/meusFIIs';
