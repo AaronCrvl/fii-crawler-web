@@ -3,7 +3,6 @@ import FIIApi from '../api/fiiApi';
 import { Navigate } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import Carregando from '../components/carregando';
-const logo = require('../assets/fiiCrawler-logo.png')
 
 function Login() {        
     const api =  new FIIApi()
@@ -105,13 +104,13 @@ function Login() {
                     {animacaoLogo ? 
                         <img
                             alt="logo fii crawler" 
-                            src={logo}
+                            src={require('../assets/fiiCrawler-logo.png')}
                             className='animate-bounce'                            
                         />
                         :
                         <img
                             alt="logo fii crawler" 
-                            src={logo}                            
+                            src={require('../assets/fiiCrawler-logo.png')}                            
                             className='hover:animate-pulse'
                         />
                     }                    

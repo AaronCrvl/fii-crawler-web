@@ -1,5 +1,4 @@
 import React from "react";
-const carteiraIcon = require('../assets/icons/carteiraIcon.png')
 
 interface CarteiraProps {
     valor : string | number,
@@ -24,7 +23,7 @@ function Carteira({valor} : CarteiraProps) {
             <div className="flex select-none">
                 <img 
                     title="Ícone Carteira"                     
-                    src={carteiraIcon}
+                    src={require('../assets/icons/carteiraIcon.png')}
                     className="w-32 h-32"
                 />            
                 <div>

@@ -2,7 +2,6 @@ import Dashboard from "../pages/dashboard";
 import MeusFIIs from "../pages/meusFIIs";
 import { SideNav } from "./sideNav";
 import SideNavOptions from "./sideNav/sideNavOptions";
-const logo = require('../assets/fiiCrawler-logo.png')
 
 const sideNavOptions : typeof SideNavOptions.prototype = [
     {
@@ -30,7 +29,7 @@ const sideNavExtraOptions : typeof SideNavOptions.prototype = [
 export default function Nav () { 
   return(
     <SideNav.Root>
-        <SideNav.Logo src={logo}/>
+        <SideNav.Logo src={require('../assets/fiiCrawler-logo.png')}/>
         <SideNav.Options 
             navBarOptions={sideNavOptions} 
             navBarExtraOptions={sideNavExtraOptions}                
