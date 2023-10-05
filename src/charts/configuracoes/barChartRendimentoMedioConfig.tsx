@@ -18,7 +18,7 @@ export default function BarChartRendimentoMedioConfig(lista : FIIType[]) {
             yAxis: {   
                 type: 'value',
                 data: lista?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoMedioAnual)
-                .map(fii => {return fii.rendimentoMedioAnual}).slice(0,10)
+                .map(fii => {return Number.parseFloat(fii.rendimentoMedioAnual.replace(',', '.'))}).slice(0,10)
             },
             series: [
                 {
@@ -27,7 +27,7 @@ export default function BarChartRendimentoMedioConfig(lista : FIIType[]) {
                     .map(fii => {
                         return {
                             value: fii.rendimentoMedioAnual === 'N/A' ? 
-                            Number.parseFloat('0,00') : Number.parseFloat(fii.rendimentoMedioAnual),
+                            Number.parseFloat('0,00') : Number.parseFloat(fii.rendimentoMedioAnual.replace(',', '.')),
 
                             itemStyle: {
                                 color: '#8E44AD',

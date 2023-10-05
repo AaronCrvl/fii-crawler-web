@@ -6,7 +6,7 @@ interface FIIGridRootProps {
 
 export default function FIIGridRoot(props : FIIGridRootProps) {    
     return(
-        <div className="w-auto rounded-lg">
+        <div className="w-fit rounded-lg">
             {props.children}
         </div>
     )

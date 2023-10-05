@@ -10,10 +10,12 @@ import FuncoesDeElementosDOM from "../utils/funcoesDeElementosDOM";
 import PieChartCotaConfig from "../charts/configuracoes/pieChartCotaConfig";
 import BarChartRendimentoMedioConfig from "../charts/configuracoes/barChartRendimentoMedioConfig";
 import BarChartUltimosRendimentoConfig from "../charts/configuracoes/BarChartUltimosRendimentoConfig";
+const atualizarIcon = require('../assets/icons/atualizarIcon.png')
 
 function Dashboard() {           
     const util_FuncoesComparacao = new FuncoesDeComparacao()
     const util_FuncoesDOM = new FuncoesDeElementosDOM()
+    //
 
     // Hooks --------------------------->
     const [dadosFII, setDadosFII] = React.useState<FIIType[]>()
@@ -49,7 +51,7 @@ function Dashboard() {
                     {dadosFII &&
                         <img 
                             alt='Atualizar dados' 
-                            src={require('../assets/icons/atualizarIcon.png')}
+                            src={atualizarIcon}
                             className="w-12 h-12 hover:cursor-pointer hover:animate-spin"
                             onClick={()=> atualizarDados()}
                         />

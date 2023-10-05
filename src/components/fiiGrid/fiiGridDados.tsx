@@ -2,6 +2,7 @@ import React, { CSSProperties } from "react";
 import { FIIType } from "../../interfaces/FIIType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
 import { FIIDetalhadoType } from "../../interfaces/FiiDetalhadoType";
+const carteiraIcon = require('../../assets/icons/carteiraIcon.png')
 
 interface FIIGridDadosProps {
     fiis : Array<FIIType | FIIDetalhadoType>,
@@ -73,7 +74,7 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                             <div className="btn border-2 p-1">
                                                 <img 
                                                     alt='adicionar a carteira' 
-                                                    src={require('../../assets/icons/carteiraIcon.png')} 
+                                                    src={carteiraIcon} 
                                                     className="ml-5 w-6 h-6 hover:invert"
                                                 />
                                             </div>

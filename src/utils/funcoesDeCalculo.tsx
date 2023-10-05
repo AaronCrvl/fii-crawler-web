@@ -26,17 +26,19 @@ export default class FuncoesDeCalculo {
         return valorCalculado
     }
 
-    public calcularSaldoCarteira (fundos : FIIDetalhadoType[]) : number {                
+    public calcularSaldoCarteira (fundos : FIIDetalhadoType[]) : string {                
         let valorCalculado : number = 0.00
         fundos.forEach((fii : FIIDetalhadoType) => {
             let valorCota = Number.parseFloat(fii.cota.replace('R$', ''))
             let valorizacao = Number.parseFloat(fii.valorizacao)            
             let qtdCotas = Number.parseInt(fii.qtdCotas)
             
+                                                                        // a definir estrutura do qtd cotas
+                                                                        // no backend da aplicação
             valorCalculado += (this.cotaRecalculada(valorCota, valorizacao) * 5)
         })
 
-        return valorCalculado
+        return valorCalculado.toLocaleString('pt-BR')
     } 
 
     public calcularVaricaoAtual (fundos : FIIDetalhadoType[]) : number {                

@@ -18,7 +18,7 @@ export default function BarChartUltimosRendimentoConfig(lista : FIIType[]) {
             yAxis: {   
                 type: 'value',
                 data: lista?.sort(util_FuncoesComparacao.funcaoComparacaoRendimentoValor)
-                .map(fii => {return fii.ultimosRedimento}).slice(0,15)
+                .map(fii => {return Number.parseFloat(fii.ultimosRedimento.replace(',', '.'))}).slice(0,15)
             },
             series: [
                 {
@@ -27,7 +27,7 @@ export default function BarChartUltimosRendimentoConfig(lista : FIIType[]) {
                     .map(fii => {
                         return {
                             value: fii.ultimoRedimentoRS === 'N/A' ? 
-                            Number.parseFloat('0,00') : Number.parseFloat(fii.ultimoRedimentoRS),
+                            Number.parseFloat('0,00') : Number.parseFloat(fii.ultimoRedimentoRS.replace(',', '.')),
 
                             itemStyle: {
                                 color: '#3498DB',
@@ -49,7 +49,7 @@ export default function BarChartUltimosRendimentoConfig(lista : FIIType[]) {
                     .map(fii => {
                         return {
                             value: fii.ultimosRedimento === 'N/A' ? 
-                            0 : Number.parseFloat(fii.ultimosRedimento),
+                            0 : Number.parseFloat(fii.ultimosRedimento.replace(',', '.')),
 
                             itemStyle: {
                                 color: '#1B4F72',

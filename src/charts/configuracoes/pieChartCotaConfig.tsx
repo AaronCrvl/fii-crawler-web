@@ -1,13 +1,4 @@
 import { FIIType } from "../../interfaces/FIIType"
-import { FIIDetalhadoType } from "../../interfaces/FiiDetalhadoType"
-import PieChart from "../models/pieChart"
-
-interface PieChartCotaConfigProps {
-    objeto?: FIIType,
-    lista? : FIIType[],
-    largura? : string,
-    altura?: string,
-}
 
 export default function PieChartCotaConfig(lista : FIIType[], objeto? : FIIType, largura? : string, altura? : string) {
     return {    

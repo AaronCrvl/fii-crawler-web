@@ -5556,7 +5556,34 @@ class FIIApi {
             )
         }, 2000) // simular atraso de 2 segundos
     })
-}
+  }
+
+  public relizarLogin(email : string, senha : string) : Promise<Response> {
+    return new Promise((resolve, reject) => {
+      setTimeout(()=> {
+        if(email == 'teste@gmail.com'){
+          resolve(
+            new Response(JSON.stringify(''), {
+              status: 200, // Ok
+              headers: {
+                  "Content-Type": "application/json; utf-8",
+              },
+            })
+          )
+        }
+        else {
+          resolve(
+            new Response(JSON.stringify('Dados inválidos'), {
+              status: 500, // Ok
+              headers: {
+                  "Content-Type": "application/json; utf-8",
+              },
+            })
+          )
+        }
+      }, 2000) // simular atraso de 2 segundos
+    })
+  }
 }
 
 export default FIIApi;

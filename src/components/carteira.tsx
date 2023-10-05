@@ -1,4 +1,5 @@
 import React from "react";
+const carteiraIcon = require('../assets/icons/carteiraIcon.png')
 
 interface CarteiraProps {
     valor : string | number,
@@ -8,7 +9,8 @@ function Carteira({valor} : CarteiraProps) {
     // Hooks --------------------------->
     const [valorState, setValorState] = React.useState<number | string>()
     React.useEffect(()=> {
-        if( // Caso tenha atualização no valor ou seja indefinido
+        if( 
+            // Caso tenha atualização no valor ou este seja indefinido
             valorState === undefined
             || valorState !== valor) {
             setValorState(valor)
@@ -18,11 +20,11 @@ function Carteira({valor} : CarteiraProps) {
     // Jsx --------------------------->
     return(
         <React.Fragment>
-            <p className="flex text-left text-sky-700 text-4xl ml-32 font-bold w-full">Saldo Atual</p>
+            <div className="flex text-left text-sky-700 text-4xl ml-32 font-bold w-full">Saldo Atual</div>
             <div className="flex select-none">
                 <img 
-                    title="Ícone Carteira" 
-                    src={require('../assets/icons/carteiraIcon.png')}
+                    title="Ícone Carteira"                     
+                    src={carteiraIcon}
                     className="w-32 h-32"
                 />            
                 <div>

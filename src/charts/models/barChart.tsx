@@ -1,17 +1,16 @@
 import React, { CSSProperties } from "react";
-import ReactEcharts from "echarts-for-react"; 
-import { FIIType } from "../../interfaces/FIIType";
+import ReactEcharts from "echarts-for-react";
 
 interface BarChartProps {
     cssProps : CSSProperties,
     option : {
         xAxis : {
             type : string,
-            data : string[]
+            data : string[] | number[]
         },
         yAxis: {
             type: string,
-            data : string[],
+            data : string[] | number[],
         },
         series: 
             {

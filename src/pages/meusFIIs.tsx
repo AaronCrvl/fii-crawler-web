@@ -1,4 +1,4 @@
-import React from "react";
+    import React from "react";
 import FIIApi from "../api/fiiApi";
 import { FIIDetalhadoType } from "../interfaces/FiiDetalhadoType";
 import { FIIFocoGrid } from "../components/fiiFocoGrid";
@@ -6,6 +6,8 @@ import Carregando from "../components/carregando";
 import Carteira from "../components/carteira";
 import { FIIGrid } from "../components/fiiGrid";
 import FuncoesDeCalculo from "../utils/funcoesDeCalculo";
+import LineChart from "../charts/models/lineChart";
+import LineChartVariacaoConfig from "../charts/configuracoes/lineChartVariacaoConfig";
 
 export default function MeusFIIs() {
     const api = new FIIApi()        
@@ -14,7 +16,7 @@ export default function MeusFIIs() {
     // Hooks --------------------------->
     const [meusFii, setMeusFii] = React.useState<FIIDetalhadoType[]>()
     const [fiiFoco, setfiiFoco] = React.useState<FIIDetalhadoType>()
-    const [valor, setValor] = React.useState<Number>()
+    const [valor, setValor] = React.useState<Number | string>()
 
     React.useEffect(()=> {
         if(meusFii === undefined) {
@@ -67,28 +69,31 @@ export default function MeusFIIs() {
 
     // Jsx --------------------------->
     return (
-        <div className="bg-sky-800 p-5 w-full h-full">
-            <div className="h-full w-full bg-zinc-100 rounded-lg">    
-                <div className="rounded-lg bg-white h-auto w-full p-24 overflow-y-auto">
+        <div className="bg-sky-800 p-5 h-fit w-full">
+            <div className="h-fit w-full bg-zinc-100 rounded-lg">    
+                <div className="rounded-lg bg-white h-auto w-full p-24">
                 {/* Ícone de Caregando */}
                 {!meusFii && <Carregando/>}
                 {/* Conteúdo */} 
+                <div style={{height : '80vh', overflowY : 'scroll'}}>
                 {meusFii &&         
-                    <div className="rounded-lg bg-white h-full w-full p-5">                        
+                    <div className="rounded-lg bg-white h-fit overflow-x-auto">                        
                         <React.Fragment>
                             <div className="p-5">                                
                                 {/* Carteira */} 
                                 <Carteira 
-                                    valor={valor === undefined ?  0.00 : util_FuncoesCalculo.calcularSaldoCarteira(meusFii!).toLocaleString('pt-BR')}
+                                    valor={valor === undefined ?  0.00 : util_FuncoesCalculo.calcularSaldoCarteira(meusFii!)}
                                 />
                                 {/* Informações FII Principal */}                                 
                                 <FIIFocoGrid.Root>                                    
                                     <div className="flex mt-24 bg-sky-100 rounded-lg p-5">
                                         <div>
-                                            <FIIFocoGrid.Cabecalho 
-                                                codigo={fiiFoco?.codigoFii.toUpperCase()} 
-                                                variacao={fiiFoco?.variacao}
-                                            />                                            
+                                            {fiiFoco && 
+                                                <FIIFocoGrid.Cabecalho 
+                                                    codigo={fiiFoco?.codigoFii.toUpperCase()} 
+                                                    variacao={fiiFoco?.variacao}
+                                                />          
+                                            }                                  
                                             <div className="flex gap-48 mt-5 bg-sky-50 rounded-lg p-5">
                                                 {/* Ícone de Caregando */}
                                                 {!fiiFoco && <Carregando />}
@@ -115,10 +120,26 @@ export default function MeusFIIs() {
                                         </div>                                        
                                     </div>
                                 </FIIFocoGrid.Root>
-                                {/* Gráfico */}
-                                <div>
-                                    
-                                </div>
+                                {/* Gráfico Variação */}
+                                {fiiFoco &&
+                                    <div className="flex w-full p-10 bg-sky-100 rounded-lg">
+                                        <div className="mt-10">
+                                            <span className="text-4xl font-bold">Sumário</span>
+                                            <div className="flex mt-10 mb-10">
+                                                <div className="p-3 rounded-full font-bold text-purple-800 bg-purple-800 text-2xl">°</div>
+                                                <div className="p-3 font-bold text-2xl">Rendimento</div>
+                                            </div>          
+                                            <div className="flex">
+                                                <div className="p-3 rounded-full font-bold text-blue-800 bg-blue-800 text-2xl">°</div>
+                                                <div className="p-3 font-bold text-2xl">Dividendo Yeild</div>
+                                            </div>                                            
+                                        </div>
+                                        <LineChart 
+                                            option={LineChartVariacaoConfig(fiiFoco).option}
+                                            cssProps={LineChartVariacaoConfig(fiiFoco).cssProps}
+                                        />
+                                    </div>
+                                }
                             </div>
                             {/* Grid Meus FII's */}                             
                             <div className="mt-5 w-full h-full">                    
@@ -138,6 +159,7 @@ export default function MeusFIIs() {
                     </div>
                 }
                 </div>
+            </div>
             </div>
         </div>        
     )
