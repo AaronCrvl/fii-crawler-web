@@ -11,13 +11,17 @@ export default class FuncoesDeElementosDOM {
     }
 
     public tituloDeGrafico(txt : string, style : string = '') : JSX.Element {
+        const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
+
         return(
+            <div className={modoEscuro === 'sim' ? 'dark' : ''}>
             <div 
                 className={style === '' ?
-                    "text-blue-900 text-4xl text-center font-bold"
+                    "text-blue-900 text-4xl text-center font-bold dark:text-white"
                     : style
                 }>
                 {txt}
+            </div>
             </div>
         )
     }

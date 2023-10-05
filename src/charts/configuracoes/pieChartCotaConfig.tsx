@@ -15,13 +15,14 @@ export default function PieChartCotaConfig(lista : FIIType[], objeto? : FIIType,
                             return Number.parseFloat(a.cota) -  Number.parseFloat(b.cota)
                         }).map(fii => {
                             return {
-                                value : fii.cota === 'N/A' ? Number.parseFloat('0,00') : Number.parseFloat(fii.cota),
+                                value : Number.parseFloat(fii.cota.replace(',','.')),
                                 name : `${fii.nome} - ${fii.cota}`
                             }                            
                         })
-                        .slice(0,50)
+                        .slice(0,30)
                 },
-            ]       
+            ],
+            roseType: 'area'       
         } 
     }
 }

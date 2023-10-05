@@ -2,10 +2,11 @@ import React from 'react';
 import FIIApi from '../api/fiiApi';
 import { useNavigate } from 'react-router-dom';
 import Carregando from '../components/carregando';
+const logo = require('../assets/fiiCrawler-logo.png');
 
 function Login() {        
     const api =  new FIIApi()
-    const nav = useNavigate()
+    const nav = useNavigate()   
     
     // Hooks --------------------------->
     const email = React.useRef(null)
@@ -13,6 +14,12 @@ function Login() {
     const [carregando, setCarregando] = React.useState<boolean>(false)   
     const [animacaoLogo, setAnimacaoLogo] = React.useState<boolean>(false)   
     const [informacaoLogin, setInformacaoLogin] = React.useState<string | undefined>()    
+    const [darkMode, setDarkMode] = React.useState(localStorage.getItem('modoEscuro')) 
+    React.useEffect(()=> {
+        console.log(`Modo Escuro: ${localStorage.getItem('modoEscuro')}`)
+        setDarkMode(localStorage.getItem('modoEscuro'))
+    }, [localStorage.getItem('modoEscuro')])
+    
 
     // Functions --------------------------->
     function validarDadosEntrada () {    
@@ -33,9 +40,11 @@ function Login() {
         
         api.relizarLogin(txtEmail, txtSenha).then(data => {
             if(data.status === 200) {                
-                setInformacaoLogin('informacaoLogin')
-                nav('/sistema/dashboard')
-                window.location.reload()
+                data.json().then((txt)=> {     
+                    localStorage.setItem('hash', 'H5465ASJSM564557A')    
+                    nav(`/sistema/dashboard`)
+                    window.location.reload()
+                })                                                
             }
             else {
                 data.json().then((txt)=> {
@@ -47,19 +56,42 @@ function Login() {
         })
     }
 
-    function logarComoConvidado () {               
-        setCarregando(true)       
-        nav('/sistema/dashboard')
+    function logarComoConvidado () { 
+        localStorage.setItem('hash', 'convidado')                
+        console.log('local: ' + localStorage.getItem('hash'))
+        nav('/sistema/dashboard')                
         window.location.reload()           
+    }
+
+    function modoEscuro() {  
+        if(darkMode === 'sim') {
+          setDarkMode('não')
+          localStorage.setItem('modoEscuro', 'não')              
+          console.log('dark mode off ' + localStorage.getItem('modoEscuro')  )  
+        }
+        else {
+          setDarkMode('sim')
+          localStorage.setItem('modoEscuro', 'sim')        
+          console.log('dark mode on ' + localStorage.getItem('modoEscuro')  )  
+        }    
+        window.location.reload()
     }
 
     // Jsx --------------------------->
     return(
         <div style={{width: '100%', height: '100vh'}}>            
-            <div className='flex'>
+            <div className={darkMode === 'sim'? 'dark flex' : 'flex'}>
                 {/* Container Preenchimento Dados */}
-                <div className="w-full h-screen bg-white">
-                    <div className='mt-96 text-8xl text-sky-800'>Realizar Login</div>
+                <div 
+                    className="w-full h-screen bg-white dark:bg-zinc-700"
+                >
+                    <div
+                        onClick={()=>modoEscuro()} 
+                        className='text-6xl select-none hover:cursor-pointer mt-10'
+                    >
+                        {darkMode === 'sim' ? '🌞' : '🌚'}
+                    </div>
+                    <div className='mt-96 text-8xl text-sky-800 dark:text-white'>Realizar Login</div>
                     {carregando && <Carregando />}
                     {!carregando && 
                         <div className='mt-10 inline-grid grid-cols-1 w-auto gap-y-5 p-5 text-xl'>
@@ -70,7 +102,7 @@ function Login() {
                                 onFocus={()=> usuarioDigitando()}
                                 onMouseLeave={()=> setAnimacaoLogo(false)}
                                 placeholder="Entre com seu e-mail"
-                                className='rounded-full w-96 bg-zinc-700 text-white p-5 hover:bg-zinc-600 focus:bg-white focus:text-black'
+                                className='rounded-full w-96 bg-zinc-700 text-white p-5 hover:bg-zinc-600 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'
                             />
                             <input                         
                                 ref={senha}                                
@@ -79,7 +111,7 @@ function Login() {
                                 onMouseLeave={()=> setAnimacaoLogo(false)}
                                 placeholder="Entre com a sua senha"
                                 title='preencha com a sua senha' 
-                                className='rounded-full w-96 bg-zinc-700 hover:bg-zinc-600 text-white p-5 focus:bg-white focus:text-black'
+                                className='rounded-full w-96 bg-zinc-700 hover:bg-zinc-600 text-white p-5 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'
                             />   
                             <div className='flex'>
                                 <button
@@ -99,27 +131,36 @@ function Login() {
                     }  
                 </div> 
                 {/* Container Logo Aplicação */}    
-                <div className="w-full h-screen">
+                <div className="w-full h-screen select-none dark:bg-purple-800">
                     {animacaoLogo ? 
                         <img
                             alt="logo fii crawler" 
-                            src={require('../assets/fiiCrawler-logo.png')}
+                            src={logo}
                             className='animate-bounce'                            
                         />
                         :
                         <img
                             alt="logo fii crawler" 
-                            src={require('../assets/fiiCrawler-logo.png')}                            
+                            src={logo}                            
                             className='hover:animate-pulse'
                         />
                     }                    
-                    <div className='text-white font-bold text-8xl'>
+                    <div className='text-white font-bold text-8xl dark:text-yellow-500'>
                         FII Crawler
                     </div>         
-                    <div className='text-white font-bold text-xl mb-24'>
+                    <div className='text-white font-bold text-xl mb-24 dark:text-yellow-500'>
                         Controle seus FII's de maneira fácil e ágil.
-                    </div>                                    
-                    <div className='mt-15 text-red-500 font-bold text-xl animate-pulse'>{informacaoLogin}</div>      
+                    </div> 
+                    <div className='text-white font-bold text-xl '>
+                        Para testes:                                                    
+                    </div>  
+                    <div className='text-white font-bold text-xl'>
+                        email : teste@gmail.com                        
+                    </div>  
+                    <div className='text-white font-bold text-xl mb-24'>
+                        senha : vazio
+                    </div>                                 
+                    <div className='mt-15 text-red-500 bg-white font-bold text-xl animate-pulse'>{informacaoLogin}</div>      
                 </div>   
             </div>
         </div>
