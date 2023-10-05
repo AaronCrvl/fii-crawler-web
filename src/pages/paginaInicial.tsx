@@ -1,10 +1,9 @@
-import React from "react";
 import Nav from "../components/nav";
 
 export default function PaginaInicial() {    
     return (
-        <React.Fragment>                 
+        <div>                 
             <Nav />                                     
-        </React.Fragment>
+        </div>
     )
 }

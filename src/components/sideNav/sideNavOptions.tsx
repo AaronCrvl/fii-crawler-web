@@ -1,7 +1,4 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import Dashboard from "../../pages/dashboard";
-import MeusFIIs from "../../pages/meusFIIs";
 
 interface navbarOption {
     optionIcon : string,

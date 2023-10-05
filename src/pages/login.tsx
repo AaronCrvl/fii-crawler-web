@@ -1,6 +1,5 @@
 import React from 'react';
 import FIIApi from '../api/fiiApi';
-import { Navigate } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import Carregando from '../components/carregando';
 

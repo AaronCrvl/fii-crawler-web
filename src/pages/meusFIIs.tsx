@@ -1,4 +1,4 @@
-    import React from "react";
+import React from "react";
 import FIIApi from "../api/fiiApi";
 import { FIIDetalhadoType } from "../interfaces/FiiDetalhadoType";
 import { FIIFocoGrid } from "../components/fiiFocoGrid";
