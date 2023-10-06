@@ -33,15 +33,13 @@ function Login() {
 
     function realizarLogin () {               
         setCarregando(true)
-        let txtEmail = (email.current! as HTMLInputElement).value
-        console.log(`Email : ${txtEmail}`)       
-        let txtSenha = (senha.current! as HTMLInputElement).value
-        console.log(`Senha : ${txtSenha}`)       
+        let txtEmail = (email.current! as HTMLInputElement).value        
+        let txtSenha = (senha.current! as HTMLInputElement).value        
         
         api.relizarLogin(txtEmail, txtSenha).then(data => {
             if(data.status === 200) {                
-                data.json().then((txt)=> {     
-                    localStorage.setItem('hash', 'H5465ASJSM564557A')    
+                data.json().then((txt = 'H5465ASJSM564557A')=> {     
+                    localStorage.setItem('hash', txt)    
                     nav(`/sistema/dashboard`)
                     window.location.reload()
                 })                                                
@@ -66,13 +64,11 @@ function Login() {
     function modoEscuro() {  
         if(darkMode === 'sim') {
           setDarkMode('não')
-          localStorage.setItem('modoEscuro', 'não')              
-          console.log('dark mode off ' + localStorage.getItem('modoEscuro')  )  
+          localStorage.setItem('modoEscuro', 'não')                        
         }
         else {
           setDarkMode('sim')
-          localStorage.setItem('modoEscuro', 'sim')        
-          console.log('dark mode on ' + localStorage.getItem('modoEscuro')  )  
+          localStorage.setItem('modoEscuro', 'sim')                  
         }    
         window.location.reload()
     }
@@ -99,7 +95,7 @@ function Login() {
                                 ref={email}                                
                                 type="email"  
                                 title='preencha com o seu e-mail' 
-                                onFocus={()=> usuarioDigitando()}
+                                onFocus={()=> usuarioDigitando()}                                
                                 onMouseLeave={()=> setAnimacaoLogo(false)}
                                 placeholder="Entre com seu e-mail"
                                 className='rounded-full w-96 bg-zinc-700 text-white p-5 hover:bg-zinc-600 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'

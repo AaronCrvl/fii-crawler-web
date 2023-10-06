@@ -82,16 +82,16 @@ export default function MeusFIIs() {
 
     // Jsx --------------------------->
     return (        
-        <div className={modoEscuro === 'sim' ? 'dark' : ''}>
-            <div className="bg-sky-800 p-5 h-auto w-full dark:bg-zinc-900">
-                <div className="h-fit w-full dark:bg-zinc-700 rounded-lg px-10">    
+        <div className={modoEscuro === 'sim' ? 'dark w-full' : 'w-full'}>
+            <div className="bg-sky-800 p-14 h-auto w-full dark:bg-zinc-900">
+                <div className="h-fit w-full dark:bg-zinc-700 rounded-lg">    
                     {!ehConvidado &&
-                        <div className="rounded-lg bg-white h-auto w-full px-20 py-12 dark:bg-zinc-700">
-                            <div className="flex mb-7">
+                        <div className="rounded-lg bg-white h-auto w-full p-8 dark:bg-zinc-700">
+                            <div className="flex mb-4">
                                 <img 
                                     alt='Atualizar dados' 
                                     src={atualizarDadosIcone}
-                                    className="w-12 h-12 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
+                                    className="w-8 h-8 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
                                     onClick={()=> atualizarDados()}
                                 />
                                 <Usuario />
@@ -103,14 +103,14 @@ export default function MeusFIIs() {
                                 {meusFii &&         
                                     <div className="rounded-lg bg-white h-fit overflow-x-auto dark:bg-zinc-700">                        
                                         <React.Fragment>
-                                            <div className="p-5">                                
+                                            <div className="p-10">                                
                                                 {/* Carteira */} 
                                                 <Carteira 
                                                     valor={valor === undefined ?  0.00 : util_FuncoesCalculo.calcularSaldoCarteira(meusFii!)}
                                                 />
                                                 {/* Informações FII Principal */}                                 
                                                 <FIIFocoGrid.Root>                                    
-                                                    <div className="flex mt-24 bg-sky-100 rounded-lg p-5 dark:bg-zinc-800">
+                                                    <div className="flex mt-16 bg-sky-100 rounded-lg p-3 dark:bg-zinc-800">
                                                         <div>
                                                             {fiiFoco && 
                                                                 <FIIFocoGrid.Cabecalho 
@@ -118,7 +118,7 @@ export default function MeusFIIs() {
                                                                     variacao={fiiFoco?.variacao}
                                                                 />          
                                                             }                                  
-                                                            <div className="flex gap-48 mt-5 bg-sky-50 rounded-lg p-5 dark:bg-zinc-600">
+                                                            <div className="flex gap-48 mt-5 bg-sky-50 rounded-lg p-3 dark:bg-zinc-600">
                                                                 {/* Ícone de Caregando */}
                                                                 {!fiiFoco && <Carregando />}
                                                                 {fiiFoco &&
@@ -166,7 +166,7 @@ export default function MeusFIIs() {
                                                 }
                                             </div>
                                             {/* Grid Meus FII's */}                             
-                                            <div className="mt-5 w-full h-full">                    
+                                            <div className="p-10 mt-5 w-full h-full">                    
                                                 {meusFii &&                        
                                                     <FIIGrid.Root>
                                                         <FIIGrid.Cabecalho></FIIGrid.Cabecalho>

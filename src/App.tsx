@@ -7,6 +7,7 @@ import PaginaInicial from './pages/paginaInicial';
 import Dashboard from './pages/dashboard';
 import MeusFIIs from './pages/meusFIIs';
 import Contexto from './components/contexts/contextoTema';
+import Configuracao from './pages/configuracao';
 
 function App() {    
   const router = new AppRouter().mapRoutes()  
@@ -36,6 +37,10 @@ function App() {
               <Route 
                 path={'/sistema/meusfiis'} 
                 element={<MeusFIIs />}
+              />
+              <Route 
+                path={'/sistema/configuracoes'} 
+                element={<Configuracao />}
               />
             </Routes>
           </BrowserRouter>        

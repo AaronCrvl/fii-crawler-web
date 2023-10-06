@@ -5,6 +5,7 @@ import Dashboard from "../pages/dashboard";
 import MeusFIIs from "../pages/meusFIIs";
 import Login from "../pages/login";
 import PaginaInicial from "../pages/paginaInicial";
+import Configuracao from "../pages/configuracao";
 
 export default class AppRouter {
   public mapRoutes() : any {
@@ -28,6 +29,11 @@ export default class AppRouter {
           {                                       
             path: "meusfiis",          
             element: <MeusFIIs />,             
+            errorElement: <PaginaDeErro />,            
+          }, 
+          {                                       
+            path: "configuracoes",          
+            element: <Configuracao />,             
             errorElement: <PaginaDeErro />,            
           }, 
         ]

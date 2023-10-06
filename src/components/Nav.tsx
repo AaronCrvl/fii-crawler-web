@@ -18,8 +18,20 @@ const sideNavOptions : typeof SideNavOptions.prototype = [
     optionText : `Minha Carteira`,
     optionIcon : meusFiiIcone,
     urlPath : '/sistema/meusfiis',      
-    convidado : ehConvidado
-  }
+    convidado : ehConvidado,
+    subOptions : [
+      { 
+        optionText : 'Efetuar Compra', 
+        optionIcon : configuracaoIcon, 
+        urlPath : '/sistema/meusfiis/efetuarCompra',        
+      },
+      { 
+        optionText : 'Efetuar Venda', 
+        optionIcon : configuracaoIcon, 
+        urlPath : '/sistema/meusfiis/efetuarVenda',        
+      }
+    ]
+  },
 ]  
 const sideNavExtraOptions : typeof SideNavOptions.prototype = [
   { 

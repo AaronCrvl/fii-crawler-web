@@ -5573,7 +5573,7 @@ class FIIApi {
         }
         else {
           resolve(
-            new Response(JSON.stringify('Dados inválidos'), {
+            new Response(null, {
               status: 500, // Ok
               headers: {
                   "Content-Type": "application/json; utf-8",

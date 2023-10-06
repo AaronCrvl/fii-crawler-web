@@ -45,7 +45,7 @@ function Dashboard() {
     
     // Jsx --------------------------->
     return (
-        <div className={modoTela === 'sim' ? "dark" : ""}>        
+        <div className={modoTela === 'sim' ? "dark w-full" : "w-full"}>        
             <div className="bg-sky-800 w-auto h-full dark:bg-zinc-700">
                 <div className="h-full p-8 dark:bg-zinc-900">                
                     <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700">    
