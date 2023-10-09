@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 import BarChart from "../charts/models/barChart";
 import FIIApi from "../api/fiiApi";
-import { FIIType } from "../interfaces/FIIType";
+import { FIIType } from "../types/FIIType";
 import PieChart from "../charts/models/pieChart";
 import { FIIGrid } from "../components/fiiGrid";
 import FuncoesDeComparacao from "../utils/funcoesDeComparacao";
@@ -46,8 +46,8 @@ function Dashboard() {
     // Jsx --------------------------->
     return (
         <div className={modoTela === 'sim' ? "dark w-full" : "w-full"}>        
-            <div className="bg-sky-800 w-auto h-full dark:bg-zinc-700">
-                <div className="h-full p-8 dark:bg-zinc-900">                
+            <div className="bg-sky-800 w-auto h-full dark:bg-zinc-700 md:h-full">
+                <div className="h-full p-14 dark:bg-zinc-900">                
                     <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700">    
                         {/* Ícone de Atualizar */}
                         {dadosFII &&
@@ -91,11 +91,11 @@ function Dashboard() {
                             </div>
                         </div>
                         {/* Lista de FII */}  
-                        <div className="mt-24 w-full">                    
+                        <div className="mt-8 w-full h-full">                    
                             {dadosFII &&                        
                                 <FIIGrid.Root>
                                     <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
-                                    <div className="h-48 overflow-y-scroll w-auto">
+                                    <div className="h-fit overflow-y-scroll w-auto">
                                         <FIIGrid.Dados fiis={dadosFII} callback={()=>{}}/>
                                     </div>
                                 </FIIGrid.Root>                                            

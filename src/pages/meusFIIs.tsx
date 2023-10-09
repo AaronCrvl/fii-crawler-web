@@ -1,6 +1,6 @@
 import React from "react";
 import FIIApi from "../api/fiiApi";
-import { FIIDetalhadoType } from "../interfaces/FiiDetalhadoType";
+import { FIIDetalhadoType } from "../types/FIIDetalhadoType";
 import { FIIFocoGrid } from "../components/fiiFocoGrid";
 import Carregando from "../components/carregando";
 import Carteira from "../components/carteira";
@@ -82,8 +82,8 @@ export default function MeusFIIs() {
 
     // Jsx --------------------------->
     return (        
-        <div className={modoEscuro === 'sim' ? 'dark w-full' : 'w-full'}>
-            <div className="bg-sky-800 p-14 h-auto w-full dark:bg-zinc-900">
+        <div className={modoEscuro === 'sim' ? 'dark w-full h-full' : 'w-full h-full'}>
+            <div className="bg-sky-800 p-14 h-full w-full dark:bg-zinc-900">
                 <div className="h-fit w-full dark:bg-zinc-700 rounded-lg">    
                     {!ehConvidado &&
                         <div className="rounded-lg bg-white h-auto w-full p-8 dark:bg-zinc-700">

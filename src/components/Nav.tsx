@@ -23,12 +23,12 @@ const sideNavOptions : typeof SideNavOptions.prototype = [
       { 
         optionText : 'Efetuar Compra', 
         optionIcon : configuracaoIcon, 
-        urlPath : '/sistema/meusfiis/efetuarCompra',        
+        urlPath : '/sistema/meusfiis',        
       },
       { 
         optionText : 'Efetuar Venda', 
         optionIcon : configuracaoIcon, 
-        urlPath : '/sistema/meusfiis/efetuarVenda',        
+        urlPath : '/sistema/meusfiis',        
       }
     ]
   },
@@ -61,7 +61,7 @@ export default function Nav () {
     <div className={dark === 'sim' ? 'dark' : ''}> 
       <div
         onClick={()=>modoEscuro()} 
-        className='text-2xl mt-5 p-1 select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'
+        className='text-2xl h-full md:h-full mt-5 p-1 select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'
       > 
         {dark === 'sim' ? '🌞' : '🌚'}
       </div>

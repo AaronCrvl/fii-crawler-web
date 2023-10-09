@@ -1,17 +1,11 @@
 import React from "react";
 
-interface subOptinsProps {    
-    optionText : string,
-    optionIcon : string,
-    urlPath : string,
-}
-
 interface navbarOptionProps {
     optionIcon : string,
     optionText : string,
     urlPath : string,    
     convidado : boolean,
-    subOptins? : subOptinsProps[]
+    subOptins? : navbarOptionProps[]
 }
 
 interface sideNavOptionsProps {
@@ -19,10 +13,7 @@ interface sideNavOptionsProps {
     navBarExtraOptions : Array<navbarOptionProps>    
 }
 
-function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) : JSX.Element {  
-    if( navBarExtraOptions[0].subOptins !== undefined) {
-        console.log('Opções: ' + navBarOptions[0].subOptins![0].optionText)
-    }
+function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) : JSX.Element {      
     const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
 
     // Hooks --------------------------->
@@ -52,26 +43,30 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
                             className={selectedTab.pathname === urlPath ? 'ml-0' : 'ml-5'} 
                         >   
                             <p className="text-white font-bold text-4xl text-left dark:text-yellow-500">{optionText}</p>                         
-                        </a>          
-                        <ul>              
-                            {(subOptins && selectedTab.pathname === urlPath) &&
-                                subOptins?.map(subOption => {
-                                    return (
-                                        <li key={Math.random()}>
-                                            <img 
-                                                alt='subOptionIcon'                             
-                                                src={subOption.optionIcon}
-                                                className={selectedTab.pathname === subOption.urlPath ? 'invert w-12 h-12 mr-3 ml-0' : 'w-12 h-12 mr-3 ml-5'} 
-                                            /> 
-                                            <a href={subOption.urlPath}>
-                                                {subOption.optionText}
-                                            </a>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
+                        </a>                                                      
                     </div>
+                    <div>              
+                        {/* {(subOptins && selectedTab.pathname === urlPath) && */}
+                        {subOptins &&
+                            subOptins?.map(subOption => {
+                                return (
+                                    <div 
+                                        key={Math.random()}
+                                        className="text-2xl text-white"
+                                    >
+                                        <img 
+                                            alt='subOptionIcon'                             
+                                            src={subOption.optionIcon}
+                                            className={selectedTab.pathname === subOption.urlPath ? 'invert w-12 h-12 mr-3 ml-0' : 'w-12 h-12 mr-3 ml-5'} 
+                                        /> 
+                                        <div>
+                                            {subOption.optionText}
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                        </div>
                 </li>   
             )                     
         )
@@ -79,43 +74,41 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
 
     // Jsx --------------------------->
     return(
-        <div className={modoEscuro === 'sim' ? 'dark' : ''}>
-            <React.Fragment>
-                {/* Opções de Quadro */}
-                <ul className="mt-32">
-                    {navBarOptions.map (
-                        option => {
-                            return (
-                                <Option 
-                                    key={Math.random()} 
-                                    optionText={option.optionText} 
-                                    optionIcon={option.optionIcon} 
-                                    urlPath={option.urlPath} 
-                                    convidado={option.convidado} 
-                                    subOptins={option.subOptins}
-                                /> 
-                            )
-                        }
-                    )}
-                </ul>
-                {/* Opções de Configuração */}            
-                <ul className="mt-96">
-                    {navBarExtraOptions.map (
-                        option => {
-                            return (
-                                <Option 
-                                    key={Math.random()} 
-                                    optionText={option.optionText} 
-                                    optionIcon={option.optionIcon} 
-                                    urlPath={option.urlPath} 
-                                    convidado={option.convidado} 
-                                    subOptins={option.subOptins}
-                                />
-                            )
-                        }
-                    )}                    
-                </ul>            
-            </React.Fragment>
+        <div className={modoEscuro === 'sim' ? 'dark' : ''}>            
+            {/* Opções de Quadro */}
+            <ul className="mt-auto w-fit h-auto">
+                {navBarOptions.map (
+                    option => {
+                        return (
+                            <Option 
+                                key={Math.random()} 
+                                optionText={option.optionText} 
+                                optionIcon={option.optionIcon} 
+                                urlPath={option.urlPath} 
+                                convidado={option.convidado} 
+                                subOptins={option.subOptins}
+                            /> 
+                        )
+                    }
+                )}
+            </ul>
+            {/* Opções de Configuração */}            
+            <ul className="mt-96">
+                {navBarExtraOptions.map (
+                    option => {
+                        return (
+                            <Option 
+                                key={Math.random()} 
+                                optionText={option.optionText} 
+                                optionIcon={option.optionIcon} 
+                                urlPath={option.urlPath} 
+                                convidado={option.convidado} 
+                                subOptins={option.subOptins}
+                            />
+                        )
+                    }
+                )}                    
+            </ul>                        
         </div>
     )
 }

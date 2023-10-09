@@ -1,4 +1,4 @@
-import { FIIType } from "../../interfaces/FIIType"
+import { FIIType } from "../../types/FIIType"
 import FuncoesDeComparacao from "../../utils/funcoesDeComparacao"
 import BarChart from "../models/barChart"
 

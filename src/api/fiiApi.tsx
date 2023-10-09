@@ -1,4 +1,6 @@
 import React from 'react';
+import { iFIIApi } from '../interfaces/iFIIApi';
+import { TransacaoType } from '../types/TransacaoType';
 
 const dataJson_Fii = [
   {
@@ -5452,7 +5454,6 @@ const dataJson_Fii = [
     "cota": "1.200,00"
   }
 ]
-
 const dataJson_FiiDetalhado = [
   {
     "userId" :  "User1",
@@ -5527,7 +5528,7 @@ const dataJson_FiiDetalhado = [
   }
 ]
 
-class FIIApi {
+class FIIApi implements iFIIApi {
   public getFIIList() : Promise<Response> {
     return new Promise((resolve, reject) => {
         setTimeout(()=> {
@@ -5582,6 +5583,36 @@ class FIIApi {
           )
         }
       }, 2000) // simular atraso de 2 segundos
+    })
+  }
+
+  public efetuarCompra(params : TransacaoType) : Promise<Response> {
+    return new Promise((resolve, reject) => {
+      setTimeout(()=> {       
+        resolve(
+          new Response(JSON.stringify("Compra de cota realizada com sucesso."), {
+            status: 200, // Ok
+            headers: {
+              "Content-Type": "application/json; utf-8",
+            },
+          })
+        )        
+      }, 5000) // simular atraso de 5 segundos
+    })
+  }
+
+  public efetuarVenda(params : TransacaoType) : Promise<Response> {
+    return new Promise((resolve, reject) => {
+      setTimeout(()=> {       
+        resolve(
+          new Response(JSON.stringify("Compra de cota realizada com sucesso."), {
+            status: 200, // Ok
+            headers: {
+              "Content-Type": "application/json; utf-8",
+            },
+          })
+        )        
+      }, 5000) // simular atraso de 5 segundos
     })
   }
 }

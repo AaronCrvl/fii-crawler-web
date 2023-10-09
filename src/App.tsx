@@ -15,9 +15,8 @@ function App() {
   //localStorage.setItem('modoEscuro', 'não')       
 
   return (    
-    <div className={modoEscuro === 'sim' ? 'dark' : ''}>
-    <div className='App w-auto h-screen bg-sky-800 dark:bg-zinc-900 font-gabarito antialiased'>         
-      <div className='flex'>          
+    <div className={modoEscuro === 'sim' ? 'dark w-full h-full' : 'w-full h-full'}>
+      <div className='App flex w-auto h-screen bg-sky-800 dark:bg-zinc-900 font-gabarito antialiased'>                        
         <RouterProvider router={router} />         
           {/* 
             adicionado devido ao pre carregamento 
@@ -44,8 +43,7 @@ function App() {
               />
             </Routes>
           </BrowserRouter>        
-      </div>
-    </div>    
+      </div>    
     </div>   
   )
 }

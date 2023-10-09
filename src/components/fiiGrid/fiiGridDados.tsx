@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
-import { FIIType } from "../../interfaces/FIIType";
+import { FIIType } from "../../types/FIIType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
-import { FIIDetalhadoType } from "../../interfaces/FiiDetalhadoType";
+import { FIIDetalhadoType } from "../../types/FIIDetalhadoType";
 const carteiraIcone = require('../../assets/icons/carteiraIcon.png');
 
 interface FIIGridDadosProps {

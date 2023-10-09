@@ -1,6 +1,6 @@
-import { DividendoType } from "../interfaces/DividendoType";
+import { DividendoType } from "../types/DividendoType";
 import FuncoesDeComparacao from "./funcoesDeComparacao";
-import { FIIDetalhadoType } from "../interfaces/FiiDetalhadoType";
+import { FIIDetalhadoType } from "../types/FIIDetalhadoType";
 
 export default class FuncoesDeCalculo {
     funcoesDeComparacao = new FuncoesDeComparacao()

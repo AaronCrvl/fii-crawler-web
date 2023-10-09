@@ -1,5 +1,5 @@
-import { FIIType } from "../interfaces/FIIType";
-import { FIIDetalhadoType } from "../interfaces/FiiDetalhadoType";
+import { FIIType } from "../types/FIIType";
+import { FIIDetalhadoType } from "../types/FIIDetalhadoType";
 
 export default class FuncoesDeElementosDOM {
     public linhaGrid(conteudo: string, tailWindStyle = 'bg-zinc-500 text-lg text-white rounded-lg border-2 border-radius') : JSX.Element {

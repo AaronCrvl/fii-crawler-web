@@ -1,11 +1,9 @@
 import { ReactNode } from "react";
-import { DividendoType } from "../../interfaces/DividendoType";
+import { DividendoType } from "../../types/DividendoType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
 
 interface FIIFocoHistoricoDividendoProps {
-    
-        lista? : DividendoType[] | undefined
-    
+    lista? : DividendoType[] | undefined    
 }
 
 export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDividendoProps) {

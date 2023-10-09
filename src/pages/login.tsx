@@ -18,6 +18,8 @@ function Login() {
     React.useEffect(()=> {
         console.log(`Modo Escuro: ${localStorage.getItem('modoEscuro')}`)
         setDarkMode(localStorage.getItem('modoEscuro'))
+
+        console.log('')
     }, [localStorage.getItem('modoEscuro')])
     
 
@@ -29,7 +31,7 @@ function Login() {
 
     function usuarioDigitando() {
         setAnimacaoLogo(true)
-    }
+    }    
 
     function realizarLogin () {               
         setCarregando(true)
@@ -38,7 +40,7 @@ function Login() {
         
         api.relizarLogin(txtEmail, txtSenha).then(data => {
             if(data.status === 200) {                
-                data.json().then((txt = 'H5465ASJSM564557A')=> {     
+                data.json().then((txt = 'H5465ASJSM564557A') => {     
                     localStorage.setItem('hash', txt)    
                     nav(`/sistema/dashboard`)
                     window.location.reload()
