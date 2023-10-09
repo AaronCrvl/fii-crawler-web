@@ -1,0 +1,3 @@
+
+Referencias Importantes
+- https://blog.bitsrc.io/type-vs-interface-in-typescript-cf3c00bc04ae
