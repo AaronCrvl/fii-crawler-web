@@ -28,7 +28,7 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
             (
                 <li 
                     key={'Option_' + Math.random()} 
-                    className={`flex mb-5 ${selectedTab.pathname === urlPath ? 'opacity-100' : 'opacity-25'} hover:opacity-100 hover:cursor-pointer hover:scale-110`}
+                    className={`flex mb-5 md:mb-2 ${selectedTab.pathname === urlPath ? 'opacity-100' : 'opacity-25'} w-fit hover:opacity-100 hover:cursor-pointer hover:scale-110`}
                 >
                     {selectedTab.pathname === urlPath && <div className="rounded-full bg-white text-white font-bold text-4xl dark:text-yellow-500 dark:bg-yellow-500">{`<`}</div>}
                     <div className='flex p-5'>                                    
@@ -42,7 +42,7 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
                             onClick={()=> setSelectedTab(window.location)} 
                             className={selectedTab.pathname === urlPath ? 'ml-0' : 'ml-5'} 
                         >   
-                            <p className="text-white font-bold text-4xl text-left dark:text-yellow-500">{optionText}</p>                         
+                            <p className="text-white font-bold text-4xl text-left dark:text-yellow-500 md:text-2xl">{optionText}</p>                         
                         </a>                                                      
                     </div>
                     <div>              
@@ -76,7 +76,7 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
     return(
         <div className={modoEscuro === 'sim' ? 'dark' : ''}>            
             {/* Opções de Quadro */}
-            <ul className="mt-auto w-fit h-auto">
+            <ul className="w-min h-auto">
                 {navBarOptions.map (
                     option => {
                         return (
@@ -93,22 +93,24 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
                 )}
             </ul>
             {/* Opções de Configuração */}            
-            <ul className="mt-96">
-                {navBarExtraOptions.map (
-                    option => {
-                        return (
-                            <Option 
-                                key={Math.random()} 
-                                optionText={option.optionText} 
-                                optionIcon={option.optionIcon} 
-                                urlPath={option.urlPath} 
-                                convidado={option.convidado} 
-                                subOptins={option.subOptins}
-                            />
-                        )
-                    }
-                )}                    
-            </ul>                        
+            <div className="h-full">
+                <ul className="mt-96 md:mt-72">
+                    {navBarExtraOptions.map (
+                        option => {
+                            return (
+                                <Option 
+                                    key={Math.random()} 
+                                    optionText={option.optionText} 
+                                    optionIcon={option.optionIcon} 
+                                    urlPath={option.urlPath} 
+                                    convidado={option.convidado} 
+                                    subOptins={option.subOptins}
+                                />
+                            )
+                        }
+                    )}                    
+                </ul>
+            </div>                        
         </div>
     )
 }

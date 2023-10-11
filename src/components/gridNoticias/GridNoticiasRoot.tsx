@@ -5,5 +5,5 @@ type GridNoticiasRootProps = {
 }
 
 export default function GridNoticiasRoot({children} : GridNoticiasRootProps) {
-    return(<div className="w-full h-fit">{children}</div>)
+    return(<div className="w-full h-full">{children}</div>)
 }

@@ -6,8 +6,8 @@ interface CarregandoProps {
 export default function Carregando({style} : CarregandoProps) {
     const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
     return(
-        <div className={modoEscuro === 'sim' ? 'dark' : ''}>
-            <div className={style? style : "w-full h-full px-96"}>
+        <div className={modoEscuro === 'sim' ? 'dark w-full h-full ' : 'w-full h-full '}>
+            <div className={style? style : "px-96"}>
                 <button disabled>
                     <img 
                         alt='loading...' 

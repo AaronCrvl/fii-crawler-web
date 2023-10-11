@@ -67,10 +67,10 @@ export default function Nav () {
   }
   
   return(    
-    <div className={dark === 'sim' ? 'dark' : ''}> 
+    <div className="w-min"> 
       <div
         onClick={()=>modoEscuro()} 
-        className='text-2xl h-full md:h-full mt-5 p-1 select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'
+        className={dark === 'sim' ? 'dark' : '' + `md:text-6xl w-min text-2xl h-full md:h-full mt-5 p-1 select-none hover:cursor-pointer w-1 h-1 md:w-5 md:h-5 hover:animate-pulse dark:bg-zinc-900`}
       > 
         {dark === 'sim' ? '🌞' : '🌚'}
       </div>
@@ -81,6 +81,6 @@ export default function Nav () {
               navBarExtraOptions={sideNavExtraOptions}                
           />
       </SideNav.Root> 
-    </div>
+    </div> 
   )
 }

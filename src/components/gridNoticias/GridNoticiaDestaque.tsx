@@ -6,36 +6,40 @@ interface GridNoticiaDestaqueProps {
 }
 
 export default function GridNoticiaDestaque({listagem} : GridNoticiaDestaqueProps) {
+    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()    
+    let divisorLista = listagem?.length
+    divisorLista = divisorLista! / 2
+
     return(        
-        <div className="flex w-full rounded-lg p-1">
-            {!listagem && <Carregando />}
-            {/* Notícia Principal */}
+        <div className={modoEscuro === 'sim' ? 'flex dark' : '' + "flex w-full h-full rounded-lg p-5"}>
+            {!listagem && <Carregando />}            
+            {/* Notícia Principal */}            
             {listagem &&
                 <div 
-                    className="rounded-lg p-5 h-full w-full"
+                    className="text-left rounded-lg mr-16 p-7 h-96 w-full bg-sky-200 hover:scale-110 hover:cursor-pointer dark:bg-yellow-200"
                     style={{
                         backgroundImage :  listagem[0].url,                          
                     }}
                 >
-                    <div className="mt-10 text-black text-lg">{listagem[0].fonte}</div>
-                    <div className="mt-10 text-blue-700 text-4xl">{listagem[0].titulo}</div>
-                    <div className="mt-10 text-blue-700 text-xl">{listagem[0].descricao}</div>
+                    <div className="mt-10 text-black font-bold text-xl">{listagem[0].fonte}</div>
+                    <div className="mt-10 text-blue-900 font-bold text-4xl dark:text-black">{listagem[0].titulo}</div>
+                    <div className="mt-10 text-blue-500 text-xl dark:text-zinc-500">{listagem[0].descricao}</div>
                 </div>
             }
             {/* Notícias Empilhadas */}
-            <div>
+            <div className="w-full gap-48">
                 {listagem &&                    
                     listagem.map(noticia => {
                         return (
                             <div 
-                                className="rounded-lg p-5 h-1/2 w-full"
+                                className="rounded-lg p-4 h-48 w-full bg-indigo-200  mb-3 text-left hover:scale-110 hover:cursor-pointer dark:bg-amber-500"
                                 style={{
-                                    backgroundImage :  noticia.url,                          
+                                    backgroundImage : 'url(noticia.url)',                          
                                 }}
                             >
-                                <div className="mt-10 text-black text-lg">{noticia.fonte}</div>
-                                <div className="mt-10 text-blue-700 text-4xl">{noticia.titulo}</div>
-                                <div className="mt-10 text-blue-700 text-xl">{noticia.descricao}</div>
+                                <div className="text-black font-bold text-md">{noticia.fonte}</div>
+                                <div className="text-blue-900 font-bold mb-5 text-2xl dark:text-white">{noticia.titulo}</div>
+                                <div className="text-blue-500 text-lg dark:text-zinc-600">{noticia.descricao}</div>
                             </div>
                         )
                     })

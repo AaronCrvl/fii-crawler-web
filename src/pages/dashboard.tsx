@@ -48,7 +48,7 @@ function Dashboard() {
         <div className={modoTela === 'sim' ? "dark w-full" : "w-full"}>        
             <div className="bg-sky-800 w-auto h-full dark:bg-zinc-700 md:h-full">
                 <div className="h-full p-14 dark:bg-zinc-900">                
-                    <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700">    
+                    <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700 md:scale-95">    
                         {/* Ícone de Atualizar */}
                         {dadosFII &&
                             <div className="flex mb-7">
@@ -91,11 +91,11 @@ function Dashboard() {
                             </div>
                         </div>
                         {/* Lista de FII */}  
-                        <div className="mt-8 w-full h-full">                    
+                        <div className="mt-2 w-full h-60 p-2">                    
                             {dadosFII &&                        
                                 <FIIGrid.Root>
                                     <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
-                                    <div className="h-fit overflow-y-scroll w-auto">
+                                    <div className="h-full overflow-y-scroll w-auto">
                                         <FIIGrid.Dados fiis={dadosFII} callback={()=>{}}/>
                                     </div>
                                 </FIIGrid.Root>                                            

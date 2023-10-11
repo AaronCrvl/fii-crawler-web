@@ -108,6 +108,20 @@ export default function MeusFIIs() {
                                                 <Carteira 
                                                     valor={valor === undefined ?  0.00 : util_FuncoesCalculo.calcularSaldoCarteira(meusFii!)}
                                                 />
+                                                {/* Grid Meus FII's */}                             
+                                                <div className="p-10 mt-5 w-full h-full">                    
+                                                    {meusFii &&                        
+                                                        <FIIGrid.Root>
+                                                            <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
+                                                            <div className="h-auto mt-auto overflow-y-auto">
+                                                                <FIIGrid.Dados 
+                                                                    fiis={meusFii} 
+                                                                    callback={()=>selecionarFii}
+                                                                />
+                                                            </div>
+                                                        </FIIGrid.Root>                                            
+                                                    }    
+                                                </div>
                                                 {/* Informações FII Principal */}                                 
                                                 <FIIFocoGrid.Root>                                    
                                                     <div className="flex mt-16 bg-sky-100 rounded-lg p-3 dark:bg-zinc-800">
@@ -143,7 +157,7 @@ export default function MeusFIIs() {
                                                             </div>
                                                         </div>                                        
                                                     </div>
-                                                </FIIFocoGrid.Root>
+                                                </FIIFocoGrid.Root>                                                
                                                 {/* Gráfico Variação */}
                                                 {fiiFoco &&
                                                     <div className="flex w-full p-10 bg-sky-100 rounded-lg dark:bg-zinc-800 dark:text-white">
@@ -164,21 +178,7 @@ export default function MeusFIIs() {
                                                         />
                                                     </div>
                                                 }
-                                            </div>
-                                            {/* Grid Meus FII's */}                             
-                                            <div className="p-10 mt-5 w-full h-full">                    
-                                                {meusFii &&                        
-                                                    <FIIGrid.Root>
-                                                        <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
-                                                        <div className="h-auto mt-auto overflow-y-auto">
-                                                            <FIIGrid.Dados 
-                                                                fiis={meusFii} 
-                                                                callback={()=>selecionarFii}
-                                                            />
-                                                        </div>
-                                                    </FIIGrid.Root>                                            
-                                                }    
-                                            </div> 
+                                            </div>                                            
                                         </React.Fragment>
                                     </div>
                                 }
