@@ -4,10 +4,12 @@ import SideNavOptions from "./sideNav/sideNavOptions";
 const dashboardIcone = require('../assets/icons/dashboard.png')
 const meusFiiIcone = require('../assets/icons/meuFIIIcon.png')
 const configuracaoIcon =  require('../assets/icons/configuracaoIcon.png')
+const noticiaIcone = require('../assets/icons/noticiaIcone.png')
 const logo = require('../assets/fiiCrawler-logo.png')
-
 const hash = localStorage.getItem('hash')?.toString()
 const ehConvidado = hash === 'convidado' ? true : false
+
+// Configs --------------------------->
 const sideNavOptions : typeof SideNavOptions.prototype = [
   {
     optionText : 'Dashboard',
@@ -32,6 +34,11 @@ const sideNavOptions : typeof SideNavOptions.prototype = [
       }
     ]
   },
+  {
+    optionText : 'Noticias',
+    optionIcon : noticiaIcone,
+    urlPath : '/sistema/noticias',      
+  },
 ]  
 const sideNavExtraOptions : typeof SideNavOptions.prototype = [
   { 
@@ -42,6 +49,8 @@ const sideNavExtraOptions : typeof SideNavOptions.prototype = [
   }
 ]
 
+
+// Nav --------------------------->
 export default function Nav () { 
   const dark = localStorage.getItem('modoEscuro')?.toString()     
     

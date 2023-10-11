@@ -6,6 +6,7 @@ import MeusFIIs from "../pages/meusFIIs";
 import Login from "../pages/login";
 import PaginaInicial from "../pages/paginaInicial";
 import Configuracao from "../pages/configuracao";
+import Noticia from "../pages/noticias";
 
 export default class AppRouter {
   public mapRoutes() : any {
@@ -29,6 +30,11 @@ export default class AppRouter {
           {                                       
             path: "meusfiis",          
             element: <MeusFIIs />,             
+            errorElement: <PaginaDeErro />,            
+          },
+          {                                       
+            path: "noticias",          
+            element: <Noticia />,             
             errorElement: <PaginaDeErro />,            
           }, 
           {                                       

@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PaginaInicial from './pages/paginaInicial';
 import Dashboard from './pages/dashboard';
 import MeusFIIs from './pages/meusFIIs';
-import Contexto from './components/contexts/contextoTema';
 import Configuracao from './pages/configuracao';
+import Noticia from './pages/noticias';
 
 function App() {    
   const router = new AppRouter().mapRoutes()  
@@ -16,7 +16,7 @@ function App() {
 
   return (    
     <div className={modoEscuro === 'sim' ? 'dark w-full h-full' : 'w-full h-full'}>
-      <div className='App flex w-auto h-screen bg-sky-800 dark:bg-zinc-900 font-gabarito antialiased'>                        
+      <div className='App flex w-auto h-full bg-sky-800 dark:bg-zinc-900 font-gabarito antialiased'>                        
         <RouterProvider router={router} />         
           {/* 
             adicionado devido ao pre carregamento 
@@ -36,6 +36,10 @@ function App() {
               <Route 
                 path={'/sistema/meusfiis'} 
                 element={<MeusFIIs />}
+              />
+              <Route 
+                path={'/sistema/noticias'} 
+                element={<Noticia />}
               />
               <Route 
                 path={'/sistema/configuracoes'} 

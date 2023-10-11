@@ -4,10 +4,10 @@ export type AdministradorType = {
     email : string,
     telefone : string,
     site : string,
-    nomeNoPregao : string,
-    numeroDeCotas : string,
+    nomeNoPregao : string,    
     patrimonio : string,
     segmento : string,
     tipoGestao : string,
     publicoAlvo : string,
+    numeroDeCotas : string,
 }
