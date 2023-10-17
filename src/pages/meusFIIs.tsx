@@ -12,9 +12,9 @@ import Usuario from "../components/usuario";
 const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 
 export default function MeusFIIs() {
-    const hash = localStorage.getItem('hash')?.toString()  
+    const jwt = localStorage.getItem('jwt')?.toString()  
     const modoEscuro = localStorage.getItem('modoEscuro')?.toString()    
-    const ehConvidado = hash === 'convidado' ? true : false
+    const ehConvidado = jwt === 'convidado' ? true : false
     const api = new FIIApi()        
     const util_FuncoesCalculo = new FuncoesDeCalculo()
 

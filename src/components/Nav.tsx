@@ -6,8 +6,8 @@ const meusFiiIcone = require('../assets/icons/meuFIIIcon.png')
 const configuracaoIcon =  require('../assets/icons/configuracaoIcon.png')
 const noticiaIcone = require('../assets/icons/noticiaIcone.png')
 const logo = require('../assets/fiiCrawler-logo.png')
-const hash = localStorage.getItem('hash')?.toString()
-const ehConvidado = hash === 'convidado' ? true : false
+const jwt = localStorage.getItem('jwt')?.toString()
+const ehConvidado = jwt === 'convidado' ? true : false
 
 // Configs --------------------------->
 const sideNavOptions : typeof SideNavOptions.prototype = [
@@ -35,6 +35,7 @@ const sideNavOptions : typeof SideNavOptions.prototype = [
     ]
   },
   {
+    convidado : ehConvidado,
     optionText : 'Noticias',
     optionIcon : noticiaIcone,
     urlPath : '/sistema/noticias',      
@@ -70,9 +71,9 @@ export default function Nav () {
     <div className="w-min"> 
       <div
         onClick={()=>modoEscuro()} 
-        className={dark === 'sim' ? 'dark' : '' + `md:text-6xl w-min text-2xl h-full md:h-full mt-5 p-1 select-none hover:cursor-pointer w-1 h-1 md:w-5 md:h-5 hover:animate-pulse dark:bg-zinc-900`}
+        className={dark === 'sim' ? 'dark' : '' + 'text-6xl w-min h-full select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'}
       > 
-        {dark === 'sim' ? '🌞' : '🌚'}
+        {dark === 'sim' ? '🌅' : '🌑'}
       </div>
       <SideNav.Root>
           <SideNav.Logo src={logo}/>        

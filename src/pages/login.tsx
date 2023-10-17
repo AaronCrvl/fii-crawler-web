@@ -41,7 +41,7 @@ function Login() {
         api.relizarLogin(txtEmail, txtSenha).then(data => {
             if(data.status === 200) {                
                 data.json().then((txt = 'H5465ASJSM564557A') => {     
-                    localStorage.setItem('hash', txt)    
+                    localStorage.setItem('jwt', 'H5465ASJSM564557A')    
                     nav(`/sistema/dashboard`)
                     window.location.reload()
                 })                                                
@@ -57,8 +57,8 @@ function Login() {
     }
 
     function logarComoConvidado () { 
-        localStorage.setItem('hash', 'convidado')                
-        console.log('local: ' + localStorage.getItem('hash'))
+        localStorage.setItem('jwt', 'convidado')                
+        console.log('local: ' + localStorage.getItem('jwt'))
         nav('/sistema/dashboard')                
         window.location.reload()           
     }
@@ -73,6 +73,15 @@ function Login() {
           localStorage.setItem('modoEscuro', 'sim')                  
         }    
         window.location.reload()
+    }
+
+    function logarComEnter(event : any) {
+        // pegar código da tecla        
+        let keyCode = event.keyCode ? event.keyCode : event.which;
+        // se a tecla pressionada tem código 13 é o Enter
+        if(keyCode === 13) {        
+            realizarLogin()
+        }
     }
 
     // Jsx --------------------------->
@@ -99,6 +108,7 @@ function Login() {
                                 title='preencha com o seu e-mail' 
                                 onFocus={()=> usuarioDigitando()}                                
                                 onMouseLeave={()=> setAnimacaoLogo(false)}
+                                onKeyDown={(event)=> logarComEnter(event)}          
                                 placeholder="Entre com seu e-mail"
                                 className='rounded-full w-96 bg-zinc-700 text-white p-5 hover:bg-zinc-600 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'
                             />

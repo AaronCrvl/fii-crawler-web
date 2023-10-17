@@ -22,7 +22,7 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
     // Jsx Elements --------------------------->
     function Option ({optionText, optionIcon, urlPath, convidado, subOptins} : navbarOptionProps) {
         return (
-            (convidado && (urlPath === '/sistema/meusfiis' || urlPath === '/sistema/configuracoes')) ?
+            (convidado && (urlPath === '/sistema/meusfiis' || urlPath === '/sistema/configuracoes' || urlPath === '/sistema/noticias')) ?
             <React.Fragment></React.Fragment>   
             :
             (

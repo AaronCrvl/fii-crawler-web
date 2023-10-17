@@ -11,10 +11,12 @@ import PieChartCotaConfig from "../charts/configuracoes/pieChartCotaConfig";
 import BarChartRendimentoMedioConfig from "../charts/configuracoes/barChartRendimentoMedioConfig";
 import BarChartUltimosRendimentoConfig from "../charts/configuracoes/BarChartUltimosRendimentoConfig";
 import Usuario from "../components/usuario";
+import { useContext } from "react";
+import { JWTContext } from "../components/contexts/JWTContext";
 const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 
 function Dashboard() {               
-    const hash = localStorage.getItem('hash')?.toString()  
+    const jwt = useContext(JWTContext)
     const modoTela = localStorage.getItem('modoEscuro')?.toString()     
     const util_FuncoesComparacao = new FuncoesDeComparacao()
     const util_FuncoesDOM = new FuncoesDeElementosDOM()        
@@ -47,7 +49,7 @@ function Dashboard() {
     return (
         <div className={modoTela === 'sim' ? "dark w-full" : "w-full"}>        
             <div className="bg-sky-800 w-auto h-full dark:bg-zinc-700 md:h-full">
-                <div className="h-full p-14 dark:bg-zinc-900">                
+                <div className="h-full p-5 dark:bg-zinc-900">                
                     <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700 md:scale-95">    
                         {/* Ícone de Atualizar */}
                         {dadosFII &&

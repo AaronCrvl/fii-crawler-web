@@ -8,11 +8,12 @@ import Dashboard from './pages/dashboard';
 import MeusFIIs from './pages/meusFIIs';
 import Configuracao from './pages/configuracao';
 import Noticia from './pages/noticias';
+import { JWTContext } from './components/contexts/JWTContext';
 
 function App() {    
   const router = new AppRouter().mapRoutes()  
   const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
-  //localStorage.setItem('modoEscuro', 'não')       
+  const jwt = localStorage.getItem('jwt')?.toString()       
 
   return (    
     <div className={modoEscuro === 'sim' ? 'dark w-full h-full' : 'w-full h-full'}>
@@ -23,30 +24,32 @@ function App() {
             necessário dos elementos
             para uso com o router 
           */}
-          <BrowserRouter>
-            <Routes>                     
-              <Route 
-                path={'/sistema'} 
-                element={<PaginaInicial />}
-              />
-              <Route 
-                path={'/sistema/dashboard'} 
-                element={<Dashboard />}
-              />
-              <Route 
-                path={'/sistema/meusfiis'} 
-                element={<MeusFIIs />}
-              />
-              <Route 
-                path={'/sistema/noticias'} 
-                element={<Noticia />}
-              />
-              <Route 
-                path={'/sistema/configuracoes'} 
-                element={<Configuracao />}
-              />
-            </Routes>
-          </BrowserRouter>        
+          <JWTContext.Provider value={jwt === undefined ? '' : jwt}>
+            <BrowserRouter>
+              <Routes>                     
+                <Route 
+                  path={'/sistema'} 
+                  element={<PaginaInicial />}
+                />
+                <Route 
+                  path={'/sistema/dashboard'} 
+                  element={<Dashboard />}
+                />
+                <Route 
+                  path={'/sistema/meusfiis'} 
+                  element={<MeusFIIs />}
+                />
+                <Route 
+                  path={'/sistema/noticias'} 
+                  element={<Noticia />}
+                />
+                <Route 
+                  path={'/sistema/configuracoes'} 
+                  element={<Configuracao />}
+                />
+              </Routes>
+            </BrowserRouter>        
+          </JWTContext.Provider>
       </div>    
     </div>   
   )
