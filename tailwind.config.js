@@ -12,6 +12,9 @@ module.exports = {
         'gabarito': ['Gabarito', 'sans-serif'],
         'inter': ['Inter', 'sans-serif']
       },
+      animation: {
+        'bounce-slow': 'bounce 9s linear infinite',
+      }
     },
   },
   plugins: [],
