@@ -4,6 +4,7 @@ import { TransacaoType } from '../types/TransacaoType';
 import { NoticiaType } from '../types/NoticiaType';
 import { FIIType } from '../types/FIIType';
 import { FIIDetalhadoType } from '../types/FIIDetalhadoType';
+import { UsuarioType } from '../types/UsuarioType';
 
 class FIIApi implements iFIIApi {
   // FII --------------------------->
@@ -5727,6 +5728,22 @@ class FIIApi implements iFIIApi {
           })
         )
       }, 1000)
+    })
+  }
+
+  // Usuario --------------------------->
+  public criarUsario(usuario : UsuarioType) : Promise<Response> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(
+          new Response (JSON.stringify('Usuario criado!'), {
+            status:200,
+            headers: {
+              "Content-Type": "application/json; utf-8",
+            }  
+          })
+        )
+      }, 3000)
     })
   }
 }

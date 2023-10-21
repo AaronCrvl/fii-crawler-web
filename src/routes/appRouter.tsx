@@ -7,6 +7,7 @@ import Login from "../pages/login";
 import PaginaInicial from "../pages/paginaInicial";
 import Configuracao from "../pages/configuracao";
 import Noticia from "../pages/noticias";
+import CriarConta from "../pages/criarConta";
 
 export default class AppRouter {
   public mapRoutes() : any {
@@ -15,6 +16,11 @@ export default class AppRouter {
       {
         path: '/',
         element: <Login />,
+        errorElement: <PaginaDeErro />,    
+      },
+      {
+        path: '/criarConta',
+        element: <CriarConta />,
         errorElement: <PaginaDeErro />,    
       },
       {                                                          

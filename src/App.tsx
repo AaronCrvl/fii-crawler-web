@@ -9,6 +9,7 @@ import MeusFIIs from './pages/meusFIIs';
 import Configuracao from './pages/configuracao';
 import Noticia from './pages/noticias';
 import { JWTContext } from './components/contexts/JWTContext';
+import CriarConta from './pages/criarConta';
 
 function App() {    
   const router = new AppRouter().mapRoutes()  
@@ -26,7 +27,12 @@ function App() {
           */}
           <JWTContext.Provider value={jwt === undefined ? '' : jwt}>
             <BrowserRouter>
-              <Routes>                     
+              <Routes>
+              
+              <Route 
+                  path={'/criarConta'} 
+                  element={<CriarConta />}
+                />                     
                 <Route 
                   path={'/sistema'} 
                   element={<PaginaInicial />}

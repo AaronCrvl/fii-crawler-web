@@ -1,5 +1,7 @@
 # 📈fiiCrawlerWeb
 
+*Este projeto ainda está em fase de desenvolvimento, sendo assim, no frontend estao sendo utilizados dados mocados na api.*
+
 Esta aplicação está sendo feita com muito carinho para todos que assim como eu investem em FII's e gostariam de gerenciar seus investimentos e acompanhar os dados de sua carteira.
 
 Neste projeto tenho dado enfoque para o UX e UI, também trabalho conceitos da web e transmissão de informações entre aplicações via api. O projeto do back end desta aplicação pode ser encontrado [aqui](https://github.com/AaronCrvl/FIICrawler-backend).

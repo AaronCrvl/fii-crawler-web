@@ -84,6 +84,10 @@ function Login() {
         }
     }
 
+    function redirecionarPaginaCriarConta() {
+        nav('/criarConta')
+    }
+
     // Jsx --------------------------->
     return(
         <div style={{width: '100%', height: '100vh'}}>            
@@ -98,7 +102,7 @@ function Login() {
                     >
                         {darkMode === 'sim' ? '🌞' : '🌚'}
                     </div>
-                    <div className='mt-96 text-8xl text-sky-800 dark:text-white'>Realizar Login</div>
+                    <div className='mt-80 text-8xl text-sky-800 dark:text-white'>Realizar Login</div>
                     {carregando && <Carregando />}
                     {!carregando && 
                         <div className='mt-10 inline-grid grid-cols-1 w-auto gap-y-5 p-5 text-xl'>
@@ -112,6 +116,7 @@ function Login() {
                                 placeholder="Entre com seu e-mail"
                                 className='rounded-full w-96 bg-zinc-700 text-white p-5 hover:bg-zinc-600 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'
                             />
+
                             <input                         
                                 ref={senha}                                
                                 type="text" 
@@ -121,20 +126,30 @@ function Login() {
                                 title='preencha com a sua senha' 
                                 className='rounded-full w-96 bg-zinc-700 hover:bg-zinc-600 text-white p-5 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'
                             />   
-                            <div className='flex'>
-                                <button
-                                    onClick={()=> realizarLogin()}
-                                    className='bg-yellow-500 hover:bg-yellow-600 p-5 text-white font-bold w-48 rounded-full mr-5'                        
-                                >
-                                    Acessar Conta
-                                </button>   
-                                <button
-                                    onClick={()=> logarComoConvidado()}
-                                    className='bg-indigo-500 hover:bg-indigo-600 p-5 text-white font-bold w-48 rounded-full'                        
-                                >
-                                    Acessar Como Convidado
-                                </button>                                        
-                            </div>                    
+                            <React.Fragment>
+                                <div className='flex w-full'>
+                                    <button
+                                        onClick={()=> realizarLogin()}
+                                        className='bg-yellow-500 hover:bg-yellow-600 p-5 text-white font-bold w-48 rounded-full mr-5'                        
+                                    >
+                                        Acessar Conta
+                                    </button>   
+                                    <button
+                                        onClick={()=> logarComoConvidado()}
+                                        className='bg-indigo-500 hover:bg-indigo-600 p-5 text-white font-bold w-48 rounded-full'                        
+                                    >
+                                        Acessar Como Convidado
+                                    </button>
+                                </div> 
+                                <div className='h-min w-full text-center'>
+                                    <button
+                                        onClick={()=> redirecionarPaginaCriarConta()}
+                                        className='bg-zinc-800 hover:bg-zinc-700 p-5 text-white font-bold w-48 rounded-full'                        
+                                    >
+                                        Cria Conta
+                                    </button>
+                                </div>                                                                        
+                            </React.Fragment>                    
                         </div>
                     }  
                 </div> 
