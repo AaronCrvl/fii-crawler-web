@@ -13,9 +13,7 @@ interface sideNavOptionsProps {
     navBarExtraOptions : Array<navbarOptionProps>    
 }
 
-function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) : JSX.Element {      
-    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
-
+function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) : JSX.Element {          
     // Hooks --------------------------->
     const [selectedTab, setSelectedTab] = React.useState<Location>(window.location)
 
@@ -74,7 +72,7 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
 
     // Jsx --------------------------->
     return(
-        <div className={modoEscuro === 'sim' ? 'dark' : ''}>            
+        <React.Fragment>            
             {/* Opções de Quadro */}
             <ul className="w-min h-auto">
                 {navBarOptions.map (
@@ -111,7 +109,7 @@ function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProp
                     )}                    
                 </ul>
             </div>                        
-        </div>
+        </React.Fragment>
     )
 }
 

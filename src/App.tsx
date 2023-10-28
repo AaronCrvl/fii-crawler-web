@@ -17,7 +17,7 @@ function App() {
   const jwt = localStorage.getItem('jwt')?.toString()       
 
   return (    
-    <div className={modoEscuro === 'sim' ? 'dark w-full h-full' : 'w-full h-full'}>
+    <div className='w-full h-full'>
       <div className='App flex w-auto h-full bg-sky-800 dark:bg-zinc-900 font-gabarito antialiased'>                        
         <RouterProvider router={router} />         
           {/* 

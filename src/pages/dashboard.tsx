@@ -16,8 +16,7 @@ import { JWTContext } from "../components/contexts/JWTContext";
 const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 
 function Dashboard() {               
-    const jwt = useContext(JWTContext)
-    const modoTela = localStorage.getItem('modoEscuro')?.toString()     
+    const jwt = useContext(JWTContext)    
     const util_FuncoesComparacao = new FuncoesDeComparacao()
     const util_FuncoesDOM = new FuncoesDeElementosDOM()        
 
@@ -46,67 +45,65 @@ function Dashboard() {
     const atualizarDados = () => setDadosFII(undefined)       
     
     // Jsx --------------------------->
-    return (
-        <div className={modoTela === 'sim' ? "dark w-full" : "w-full"}>        
-            <div className="bg-sky-800 w-auto h-screen dark:bg-zinc-700 md:h-full">
-                <div className="h-full p-5 dark:bg-zinc-900">                
-                    <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700 md:scale-95">    
-                        {/* Ícone de Atualizar */}
-                        {dadosFII &&
-                            <div className="flex mb-7">
-                                <img 
-                                    alt='Atualizar dados' 
-                                    src={atualizarDadosIcone}
-                                    className="w-12 h-12 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
-                                    onClick={()=> atualizarDados()}
-                                />
-                                <Usuario />
+    return (        
+        <div className="bg-sky-800 w-full w-auto h-screen dark:bg-zinc-700 md:h-full">
+            <div className="h-full p-5 dark:bg-zinc-900">                
+                <div className="rounded-lg bg-white h-full p-5 dark:bg-zinc-700 md:scale-95">    
+                    {/* Ícone de Atualizar */}
+                    {dadosFII &&
+                        <div className="flex mb-7">
+                            <img 
+                                alt='Atualizar dados' 
+                                src={atualizarDadosIcone}
+                                className="w-12 h-12 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
+                                onClick={()=> atualizarDados()}
+                            />
+                            <Usuario />
+                        </div>
+                    }
+                    {/* Ícone de Caregando */}
+                    {!dadosFII && <Carregando />}
+                    {/* Gráficos */}      
+                    <div className="flex">                    
+                        {/* Pie Chart                                                 */}
+                        {dadosFII && 
+                            <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
+                                {util_FuncoesDOM.tituloDeGrafico('Valor da Cota - Top 30')}
+                                <PieChart option={PieChartCotaConfig(dadosFII).option} cssProps={PieChartCotaConfig(dadosFII).cssProps} />
                             </div>
-                        }
-                        {/* Ícone de Caregando */}
-                        {!dadosFII && <Carregando />}
-                        {/* Gráficos */}      
-                        <div className="flex">                    
-                            {/* Pie Chart                                                 */}
+                        }                    
+                        {/* Bar Charts                                                 */}
+                        <div>
+                            {/* Bar Chart 1 */}
                             {dadosFII && 
                                 <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
-                                    {util_FuncoesDOM.tituloDeGrafico('Valor da Cota - Top 30')}
-                                    <PieChart option={PieChartCotaConfig(dadosFII).option} cssProps={PieChartCotaConfig(dadosFII).cssProps} />
+                                    {util_FuncoesDOM.tituloDeGrafico('Rendimento Médio Anual')}                                    
+                                    <BarChart option={BarChartRendimentoMedioConfig(dadosFII).option} cssProps={BarChartRendimentoMedioConfig(dadosFII).cssProps}/>
                                 </div>
-                            }                    
-                            {/* Bar Charts                                                 */}
-                            <div>
-                                {/* Bar Chart 1 */}
-                                {dadosFII && 
-                                    <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
-                                        {util_FuncoesDOM.tituloDeGrafico('Rendimento Médio Anual')}                                    
-                                        <BarChart option={BarChartRendimentoMedioConfig(dadosFII).option} cssProps={BarChartRendimentoMedioConfig(dadosFII).cssProps}/>
-                                    </div>
-                                } 
-                                {/* Bar Chart 2 */}
-                                {dadosFII && 
-                                    <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
-                                        {util_FuncoesDOM.tituloDeGrafico('Últimos Rendimentos - R$ & %')}
-                                        <BarChart option={BarChartUltimosRendimentoConfig(dadosFII).option} cssProps={BarChartUltimosRendimentoConfig(dadosFII).cssProps}/>
-                                    </div>
-                                } 
-                            </div>
+                            } 
+                            {/* Bar Chart 2 */}
+                            {dadosFII && 
+                                <div className="align-left text-left items-left justify-left mr-auto opacity-70 hover:opacity-100 scale-95 hover:scale-110">
+                                    {util_FuncoesDOM.tituloDeGrafico('Últimos Rendimentos - R$ & %')}
+                                    <BarChart option={BarChartUltimosRendimentoConfig(dadosFII).option} cssProps={BarChartUltimosRendimentoConfig(dadosFII).cssProps}/>
+                                </div>
+                            } 
                         </div>
-                        {/* Lista de FII */}  
-                        <div className="mt-2 w-full h-60 p-2">                    
-                            {dadosFII &&                        
-                                <FIIGrid.Root>
-                                    <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
-                                    <div className="h-full overflow-y-scroll w-auto">
-                                        <FIIGrid.Dados fiis={dadosFII} callback={()=>{}}/>
-                                    </div>
-                                </FIIGrid.Root>                                            
-                            }    
-                        </div>                               
                     </div>
+                    {/* Lista de FII */}  
+                    <div className="mt-2 w-full h-60 p-2">                    
+                        {dadosFII &&                        
+                            <FIIGrid.Root>
+                                <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
+                                <div className="h-full overflow-y-scroll w-auto">
+                                    <FIIGrid.Dados fiis={dadosFII} callback={()=>{}}/>
+                                </div>
+                            </FIIGrid.Root>                                            
+                        }    
+                    </div>                               
                 </div>
-            </div>   
-        </div>    
+            </div>
+        </div>           
     )
 }
 
