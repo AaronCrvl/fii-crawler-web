@@ -1,5 +1,6 @@
 import React from "react";
 import { SideNav } from "./sideNav";
+import useTema from "../hooks/useTema";
 import SideNavOptions from "./sideNav/sideNavOptions";
 const dashboardIcone = require('../assets/icons/dashboard.png')
 const meusFiiIcone = require('../assets/icons/meuFIIIcon.png')
@@ -50,30 +51,17 @@ const sideNavExtraOptions : typeof SideNavOptions.prototype = [
   }
 ]
 
-
 // Nav --------------------------->
-export default function Nav () { 
-  const dark = localStorage.getItem('modoEscuro')?.toString()     
-    
-  function modoEscuro() {  
-    if(dark === 'sim') {      
-      localStorage.setItem('modoEscuro', 'não')              
-      console.log('dark mode off ' + localStorage.getItem('modoEscuro')  )  
-    }
-    else {      
-      localStorage.setItem('modoEscuro', 'sim')        
-      console.log('dark mode on ' + localStorage.getItem('modoEscuro')  )  
-    }    
-    window.location.reload()
-  }
-  
+export default function Nav () {   
+  const [tema, setTema] = useTema()
+
   return(    
     <div className="w-min"> 
       <div
-        onClick={()=>modoEscuro()} 
-        className={dark === 'sim' ? 'dark' : '' + 'text-6xl w-min h-full select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'}
+        onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')}
+        className='text-6xl w-min h-full select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'
       > 
-        {dark === 'sim' ? '🌅' : '🌑'}
+        {tema === 'light' ? '🌅' : '🌑'}
       </div>
       <SideNav.Root>
           <SideNav.Logo src={logo}/>        

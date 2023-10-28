@@ -1,17 +1,15 @@
 import { NoticiaType } from "../../types/NoticiaType"
 import Carregando from "../carregando"
-
-interface GridNoticiaDestaqueProps {
+type GridNoticiaDestaqueProps = {
     listagem? : NoticiaType[]
 }
 
-export default function GridNoticiaDestaque({listagem} : GridNoticiaDestaqueProps) {
-    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()    
+export default function GridNoticiaDestaque({listagem} : GridNoticiaDestaqueProps) {    
     let divisorLista = listagem?.length
     divisorLista = divisorLista! / 2
 
     return(        
-        <div className={modoEscuro === 'sim' ? 'flex dark' : '' + "flex w-full h-full rounded-lg p-5"}>
+        <div className="flex w-full h-full rounded-lg p-5">
             {!listagem && <Carregando />}            
             {/* Notícia Principal */}            
             {listagem &&

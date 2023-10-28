@@ -12,19 +12,12 @@ import Usuario from "../components/usuario";
 const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 
 export default function MeusFIIs() {
-    const jwt = localStorage.getItem('jwt')?.toString()  
-    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()    
+    const jwt = localStorage.getItem('jwt')?.toString()        
     const ehConvidado = jwt === 'convidado' ? true : false
     const api = new FIIApi()        
     const util_FuncoesCalculo = new FuncoesDeCalculo()
 
-    // Hooks --------------------------->
-    const [darkMode, setDarkMode] = React.useState(localStorage.getItem('modoEscuro')) 
-    React.useEffect(()=> {
-        console.log(`Modo Escuro: ${localStorage.getItem('modoEscuro')}`)
-        setDarkMode(localStorage.getItem('modoEscuro'))
-    })
-
+    // Hooks --------------------------->   
     const [meusFii, setMeusFii] = React.useState<FIIDetalhadoType[]>()
     const [fiiFoco, setfiiFoco] = React.useState<FIIDetalhadoType>()
     const [valor, setValor] = React.useState<Number | string>()
@@ -44,10 +37,7 @@ export default function MeusFIIs() {
                             setValor(util_FuncoesCalculo.calcularSaldoCarteira(dados))
                         }
                     })
-                }
-                else {
-
-                }
+                }               
             })            
         }
     }, [meusFii])
@@ -81,118 +71,116 @@ export default function MeusFIIs() {
     }
 
     // Jsx --------------------------->
-    return (        
-        <div className={modoEscuro === 'sim' ? 'dark w-full h-full' : 'w-full h-full'}>
-            <div className="bg-sky-800 p-14 h-full w-full dark:bg-zinc-900">
-                <div className="h-fit w-full dark:bg-zinc-700 rounded-lg">    
-                    {!ehConvidado &&
-                        <div className="rounded-lg bg-white h-auto w-full p-8 dark:bg-zinc-700">
-                            <div className="flex mb-4">
-                                <img 
-                                    alt='Atualizar dados' 
-                                    src={atualizarDadosIcone}
-                                    className="w-8 h-8 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
-                                    onClick={()=> atualizarDados()}
-                                />
-                                <Usuario />
-                            </div>
-                            {/* Ícone de Caregando */}
-                            {!meusFii && <Carregando/>}
-                            {/* Conteúdo */} 
-                            <div style={{height : '80vh', overflowY : 'scroll'}}>
-                                {meusFii &&         
-                                    <div className="rounded-lg bg-white h-fit overflow-x-auto dark:bg-zinc-700">                        
-                                        <React.Fragment>
-                                            <div className="p-10">                                
-                                                {/* Carteira */} 
-                                                <Carteira 
-                                                    valor={valor === undefined ?  0.00 : util_FuncoesCalculo.calcularSaldoCarteira(meusFii!)}
-                                                />
-                                                {/* Grid Meus FII's */}                             
-                                                <div className="p-10 mt-5 w-full h-full">                    
-                                                    {meusFii &&                        
-                                                        <FIIGrid.Root>
-                                                            <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
-                                                            <div className="h-auto mt-auto overflow-y-auto">
-                                                                <FIIGrid.Dados 
-                                                                    fiis={meusFii} 
-                                                                    callback={()=>selecionarFii}
-                                                                />
-                                                            </div>
-                                                        </FIIGrid.Root>                                            
-                                                    }    
-                                                </div>
-                                                {/* Informações FII Principal */}                                 
-                                                <FIIFocoGrid.Root>                                    
-                                                    <div className="flex mt-16 bg-sky-100 rounded-lg p-3 dark:bg-zinc-800">
-                                                        <div>
-                                                            {fiiFoco && 
-                                                                <FIIFocoGrid.Cabecalho 
-                                                                    codigo={fiiFoco?.codigoFii.toUpperCase()} 
-                                                                    variacao={fiiFoco?.variacao}
-                                                                />          
-                                                            }                                  
-                                                            <div className="flex gap-48 mt-5 bg-sky-50 rounded-lg p-3 dark:bg-zinc-600">
-                                                                {/* Ícone de Caregando */}
-                                                                {!fiiFoco && <Carregando />}
-                                                                {fiiFoco &&
-                                                                    <div className="mt-5">
-                                                                        <FIIFocoGrid.Detalhamento 
-                                                                            nomeCompleto={fiiFoco?.nomeCompleto}
-                                                                            segmento={fiiFoco?.administrador.segmento}
-                                                                            cnpj={fiiFoco?.administrador.cnpj}                                                        
-                                                                        />
-                                                                    </div>
-                                                                }
-                                                                {fiiFoco &&
-                                                                    <div className="mt-5">
-                                                                        <FIIFocoGrid.DetalhamentoValores 
-                                                                            valorCota={fiiFoco?.cota}
-                                                                            valorMaximo={'72.89'}
-                                                                            valorMinimo={'69.50'}
-                                                                            valorizacao={fiiFoco?.valorizacao}
-                                                                        />
-                                                                    </div>
-                                                                }
-                                                            </div>
-                                                        </div>                                        
-                                                    </div>
-                                                </FIIFocoGrid.Root>                                                
-                                                {/* Gráfico Variação */}
-                                                {fiiFoco &&
-                                                    <div className="flex w-full p-10 bg-sky-100 rounded-lg dark:bg-zinc-800 dark:text-white">
-                                                        <div className="mt-10">
-                                                            <span className="text-4xl font-bold">Sumário</span>
-                                                            <div className="flex mt-10 mb-10">
-                                                                <div className="p-3 rounded-full font-bold text-purple-800 bg-purple-800 text-2xl">°</div>
-                                                                <div className="p-3 font-bold text-2xl">Rendimento</div>
-                                                            </div>          
-                                                            <div className="flex">
-                                                                <div className="p-3 rounded-full font-bold text-blue-800 bg-blue-800 text-2xl">°</div>
-                                                                <div className="p-3 font-bold text-2xl">Dividendo Yeild</div>
-                                                            </div>                                            
+    return (                
+        <div className="bg-sky-800 p-14 h-full w-full dark:bg-zinc-900">
+            <div className="h-fit w-full dark:bg-zinc-700 rounded-lg">    
+                {!ehConvidado &&
+                    <div className="rounded-lg bg-white h-auto w-full p-8 dark:bg-zinc-700">
+                        <div className="flex mb-4">
+                            <img 
+                                alt='Atualizar dados' 
+                                src={atualizarDadosIcone}
+                                className="w-8 h-8 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
+                                onClick={()=> atualizarDados()}
+                            />
+                            <Usuario />
+                        </div>
+                        {/* Ícone de Caregando */}
+                        {!meusFii && <Carregando/>}
+                        {/* Conteúdo */} 
+                        <div style={{height : '80vh', overflowY : 'scroll'}}>
+                            {meusFii &&         
+                                <div className="rounded-lg bg-white h-fit overflow-x-auto dark:bg-zinc-700">                        
+                                    <React.Fragment>
+                                        <div className="p-10">                                
+                                            {/* Carteira */} 
+                                            <Carteira 
+                                                valor={valor === undefined ?  0.00 : util_FuncoesCalculo.calcularSaldoCarteira(meusFii!)}
+                                            />
+                                            {/* Grid Meus FII's */}                             
+                                            <div className="p-10 mt-5 w-full h-full">                    
+                                                {meusFii &&                        
+                                                    <FIIGrid.Root>
+                                                        <FIIGrid.Cabecalho></FIIGrid.Cabecalho>
+                                                        <div className="h-auto mt-auto overflow-y-auto">
+                                                            <FIIGrid.Dados 
+                                                                fiis={meusFii} 
+                                                                callback={()=>selecionarFii}
+                                                            />
                                                         </div>
-                                                        <LineChart 
-                                                            option={LineChartVariacaoConfig(fiiFoco).option}
-                                                            cssProps={LineChartVariacaoConfig(fiiFoco).cssProps}
-                                                        />
+                                                    </FIIGrid.Root>                                            
+                                                }    
+                                            </div>
+                                            {/* Informações FII Principal */}                                 
+                                            <FIIFocoGrid.Root>                                    
+                                                <div className="flex mt-16 bg-sky-100 rounded-lg p-3 dark:bg-zinc-800">
+                                                    <div>
+                                                        {fiiFoco && 
+                                                            <FIIFocoGrid.Cabecalho 
+                                                                codigo={fiiFoco?.codigoFii.toUpperCase()} 
+                                                                variacao={fiiFoco?.variacao}
+                                                            />          
+                                                        }                                  
+                                                        <div className="flex gap-48 mt-5 bg-sky-50 rounded-lg p-3 dark:bg-zinc-600">
+                                                            {/* Ícone de Caregando */}
+                                                            {!fiiFoco && <Carregando />}
+                                                            {fiiFoco &&
+                                                                <div className="mt-5">
+                                                                    <FIIFocoGrid.Detalhamento 
+                                                                        nomeCompleto={fiiFoco?.nomeCompleto}
+                                                                        segmento={fiiFoco?.administrador.segmento}
+                                                                        cnpj={fiiFoco?.administrador.cnpj}                                                        
+                                                                    />
+                                                                </div>
+                                                            }
+                                                            {fiiFoco &&
+                                                                <div className="mt-5">
+                                                                    <FIIFocoGrid.DetalhamentoValores 
+                                                                        valorCota={fiiFoco?.cota}
+                                                                        valorMaximo={'72.89'}
+                                                                        valorMinimo={'69.50'}
+                                                                        valorizacao={fiiFoco?.valorizacao}
+                                                                    />
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>                                        
+                                                </div>
+                                            </FIIFocoGrid.Root>                                                
+                                            {/* Gráfico Variação */}
+                                            {fiiFoco &&
+                                                <div className="flex w-full p-10 bg-sky-100 rounded-lg dark:bg-zinc-800 dark:text-white">
+                                                    <div className="mt-10">
+                                                        <span className="text-4xl font-bold">Sumário</span>
+                                                        <div className="flex mt-10 mb-10">
+                                                            <div className="p-3 rounded-full font-bold text-purple-800 bg-purple-800 text-2xl">°</div>
+                                                            <div className="p-3 font-bold text-2xl">Rendimento</div>
+                                                        </div>          
+                                                        <div className="flex">
+                                                            <div className="p-3 rounded-full font-bold text-blue-800 bg-blue-800 text-2xl">°</div>
+                                                            <div className="p-3 font-bold text-2xl">Dividendo Yeild</div>
+                                                        </div>                                            
                                                     </div>
-                                                }
-                                            </div>                                            
-                                        </React.Fragment>
-                                    </div>
-                                }
-                            </div>
+                                                    <LineChart 
+                                                        option={LineChartVariacaoConfig(fiiFoco).option}
+                                                        cssProps={LineChartVariacaoConfig(fiiFoco).cssProps}
+                                                    />
+                                                </div>
+                                            }
+                                        </div>                                            
+                                    </React.Fragment>
+                                </div>
+                            }
                         </div>
-                    }
-                    {ehConvidado &&
-                        <div className="rounded-lg bg-white h-full w-full p-24 text-4xl">
-                            Esta funcionalidade é reservada somente para usuários.
-                            Faça login para utilizá-la.
-                        </div>
-                    }
-                </div>
-            </div>   
-        </div> 
+                    </div>
+                }
+                {ehConvidado &&
+                    <div className="rounded-lg bg-white h-full w-full p-24 text-4xl">
+                        Esta funcionalidade é reservada somente para usuários.
+                        Faça login para utilizá-la.
+                    </div>
+                }
+            </div>
+        </div>           
     )
 }

@@ -6,8 +6,7 @@ const usuarioICon = require('../assets/icons/usuarioIcone.png');
 export default function Usuario() {
     const nav = useNavigate()
     const jwt = useContext(JWTContext)
-    const ehConvidado = jwt === 'convidado' ? true : false        
-    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
+    const ehConvidado = jwt === 'convidado' ? true : false             
 
     function navPaginaConfigPerfil() {
         if(!ehConvidado) {
@@ -21,7 +20,7 @@ export default function Usuario() {
     return (
         <div 
             onClick={()=>navPaginaConfigPerfil()}
-            className={modoEscuro === 'sim' ? 'dark' : '' + "select-none flex ml-auto p-2 bg-indigo-300 rounded-full hover:bg-indigo-400 hover:cursor-pointer dark:bg-yellow-600 hover:dark:bg-yellow-700"}
+            className="select-none flex ml-auto p-2 bg-indigo-300 rounded-full hover:bg-indigo-400 hover:cursor-pointer dark:bg-yellow-600 hover:dark:bg-yellow-700"
         >            
             <img 
                 alt='logo usuário'

@@ -2,15 +2,19 @@ import React from 'react';
 import FIIApi from '../api/fiiApi';
 import { useNavigate } from 'react-router-dom';
 import Carregando from '../components/carregando';
+import useTema from '../hooks/useTema';
 const logo = require('../assets/fiiCrawler-logo.png');
 
 function Login() {        
-    const api =  new FIIApi()
-    const nav = useNavigate()   
+    const api =  new FIIApi()       
     
+    // Hooks Personalizados --------------------------->
+    const [tema, setTema] = useTema()
+
     // Hooks --------------------------->
+    const nav = useNavigate()
     const email = React.useRef(null)
-    const senha = React.useRef(null)    
+    const senha = React.useRef(null)        
     const [carregando, setCarregando] = React.useState<boolean>(false)   
     const [animacaoLogo, setAnimacaoLogo] = React.useState<boolean>(false)   
     const [informacaoLogin, setInformacaoLogin] = React.useState<string | undefined>()    
@@ -91,13 +95,13 @@ function Login() {
     // Jsx --------------------------->
     return(
         <div style={{width: '100%', height: '100vh'}}>            
-            <div className={darkMode === 'sim'? 'dark flex' : 'flex'}>
+            <div className='flex'>
                 {/* Container Preenchimento Dados */}
                 <div 
                     className="w-full h-screen bg-white dark:bg-zinc-700"
                 >
                     <div
-                        onClick={()=>modoEscuro()} 
+                        onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')} 
                         className='text-6xl select-none hover:cursor-pointer mt-10'
                     >
                         {darkMode === 'sim' ? '🌞' : '🌚'}

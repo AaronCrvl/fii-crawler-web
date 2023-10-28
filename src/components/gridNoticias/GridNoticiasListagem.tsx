@@ -1,13 +1,10 @@
 import React from "react";
 import { NoticiaType } from "../../types/NoticiaType";
-
-interface NoticiasProps {    
+type NoticiasProps = {    
     listagem : NoticiaType[]
 }
 
-export default function GridNoticiasListagem({listagem} : NoticiasProps) {        
-    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()    
-
+export default function GridNoticiasListagem({listagem} : NoticiasProps) {            
     function definirCor({tempoPassado} : NoticiaType ){
         if(tempoPassado.includes('segundos')){
             return 'bg-blue-300 dark:bg-zinc-300'
@@ -33,7 +30,7 @@ export default function GridNoticiasListagem({listagem} : NoticiasProps) {
     }
     // Jsx --------------------------->
     return(
-        <div className={modoEscuro === 'sim' ? 'dark' : '' + "h-max w-full"}>            
+        <div className="h-max w-full">            
             <div className="text-6xl text-black text-left dark:text-white mb-15">Lista de Notícias</div>
             <div className="h-60 md:48 mt-15 md:mt-10 overflow-y-scroll">
                 {listagem &&
