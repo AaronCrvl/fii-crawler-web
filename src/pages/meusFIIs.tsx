@@ -9,10 +9,11 @@ import FuncoesDeCalculo from "../utils/funcoesDeCalculo";
 import LineChart from "../charts/models/lineChart";
 import LineChartVariacaoConfig from "../charts/configuracoes/lineChartVariacaoConfig";
 import Usuario from "../components/usuario";
+import useJWT from "../hooks/useJWT";
 const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 
 export default function MeusFIIs() {
-    const jwt = localStorage.getItem('jwt')?.toString()        
+    const [jwt, setJWT] = useJWT()        
     const ehConvidado = jwt === 'convidado' ? true : false
     const api = new FIIApi()        
     const util_FuncoesCalculo = new FuncoesDeCalculo()

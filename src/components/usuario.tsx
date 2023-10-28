@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from 'react';
-import { JWTContext } from "./contexts/JWTContext";
+import useJWT from "../hooks/useJWT";
 const usuarioICon = require('../assets/icons/usuarioIcone.png');
 
 export default function Usuario() {
     const nav = useNavigate()
-    const jwt = useContext(JWTContext)
+    const [jwt, setJWT] = useJWT()
     const ehConvidado = jwt === 'convidado' ? true : false             
 
     function navPaginaConfigPerfil() {

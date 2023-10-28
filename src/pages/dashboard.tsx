@@ -11,12 +11,9 @@ import PieChartCotaConfig from "../charts/configuracoes/pieChartCotaConfig";
 import BarChartRendimentoMedioConfig from "../charts/configuracoes/barChartRendimentoMedioConfig";
 import BarChartUltimosRendimentoConfig from "../charts/configuracoes/BarChartUltimosRendimentoConfig";
 import Usuario from "../components/usuario";
-import { useContext } from "react";
-import { JWTContext } from "../components/contexts/JWTContext";
 const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 
-function Dashboard() {               
-    const jwt = useContext(JWTContext)    
+function Dashboard() {                  
     const util_FuncoesComparacao = new FuncoesDeComparacao()
     const util_FuncoesDOM = new FuncoesDeElementosDOM()        
 

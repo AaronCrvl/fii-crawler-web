@@ -1,11 +1,13 @@
 import React from 'react';
 import FIIApi from '../api/fiiApi';
 import { useNavigate } from 'react-router-dom';
+import useJWT from '../hooks/useJWT';
 import Carregando from '../components/carregando';
 import useTema from '../hooks/useTema';
 const logo = require('../assets/fiiCrawler-logo.png');
 
 function Login() {        
+    const [jwt, setJWT] = useJWT()
     const api =  new FIIApi()       
     
     // Hooks Personalizados --------------------------->
@@ -44,8 +46,8 @@ function Login() {
         
         api.relizarLogin(txtEmail, txtSenha).then(data => {
             if(data.status === 200) {                
-                data.json().then((txt = 'H5465ASJSM564557A') => {     
-                    localStorage.setItem('jwt', 'H5465ASJSM564557A')    
+                data.json().then((txt = '@@@@@&(') => {
+                    setJWT('@@@@@&(')                           
                     nav(`/sistema/dashboard`)
                     window.location.reload()
                 })                                                
@@ -61,22 +63,9 @@ function Login() {
     }
 
     function logarComoConvidado () { 
-        localStorage.setItem('jwt', 'convidado')                
-        console.log('local: ' + localStorage.getItem('jwt'))
+        setJWT('convidado')                                 
         nav('/sistema/dashboard')                
         window.location.reload()           
-    }
-
-    function modoEscuro() {  
-        if(darkMode === 'sim') {
-          setDarkMode('não')
-          localStorage.setItem('modoEscuro', 'não')                        
-        }
-        else {
-          setDarkMode('sim')
-          localStorage.setItem('modoEscuro', 'sim')                  
-        }    
-        window.location.reload()
     }
 
     function logarComEnter(event : any) {
