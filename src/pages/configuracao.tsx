@@ -1,12 +1,11 @@
 import React from "react";
 import FIIApi from "../api/fiiApi";
-import { useContext } from "react";
-import { JWTContext } from "../components/contexts/JWTContext";
+import useJWT from "../hooks/useJWT";
 const usuarioLogo = require('../assets/icons/usuarioIcone.png')
 
 export default function Configuracao() {
     const api = new FIIApi()
-    const jwt = useContext(JWTContext)            
+    const [jwt, setJWT] = useJWT()            
 
     // Hooks --------------------------->
     const email = React.useRef(null)

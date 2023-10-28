@@ -1,14 +1,11 @@
 28 de Outubro de 2023 - Gerenciamento de variáveis de estado
 Autor : AaronCrvl
 
-Após iniciar o uso das funcionalidades Atom e useAtom da bibliotica Jotai foi observado uma melhora significativa na performance na aplicaçao ao efetuar a mudança de tema.
+Após iniciar o uso das funcionalidades Atom e useAtom da biblioteca Jotai foi observado uma melhora significativa no desempenho na aplicação ao efetuar a mudança de tema.
 
-A biblioteca Jotai foca em gerenciamento de estado e seu uso é como uma combinaçao do useContext e useState. A aproximaçao escolhida para este caso foi utilizar um hook 
-personalizado para a alteraçao de tema e fazer a chamada do mesmo somente onde for necessário, como neste caso, na barra de navegaçao de na tela inicial da aplicaçao.
+A biblioteca Jotai foca em gerenciamento de estado e seu uso é como uma combinação do useContext e useState. A aproximação escolhida para este caso foi utilizar um hook personalizado para a alteração de tema e fazer a chamada do mesmo somente onde for necessário, como neste caso, na barra de navegação de na tela inicial da aplicação.
 
-Uma biblioteca de fácil uso e que opode ser utilizada amplamente neste projeto para gerencimento de compras e vendas de cotas do usuário, compartilhamento da chave JWT 
-utilizada para autorizar o uso dos métodos no backend.
-
+Uma biblioteca de fácil uso, que pode ser utilizada amplamente neste projeto para gerenciamento de compras e vendas de cotas do usuário, compartilhamento da chave JWT utilizada para autorizar o uso dos métodos no backend.
 !---------------------------------------------------------------------------------------
 
 Referencias Importantes
