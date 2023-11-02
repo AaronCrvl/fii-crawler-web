@@ -32,7 +32,12 @@ export default function MeusFIIs() {
                     .then(json => {
                         let dados = json as FIIDetalhadoType[]
                         setMeusFii(dados)   
-                        setfiiFoco(dados.sort()[0])         
+                        setfiiFoco(
+                            dados.sort((a : FIIDetalhadoType, b : FIIDetalhadoType) => 
+                                Number.parseFloat(a.valorizacao.replace('+', '').replace('-', '').replace(',', '.')) 
+                                - Number.parseFloat(b.valorizacao.replace('+', '').replace('-', '').replace(',', '.')))
+                                [0]
+                        )         
                         
                         if(valor == undefined) {
                             setValor(util_FuncoesCalculo.calcularSaldoCarteira(dados))
@@ -83,6 +88,7 @@ export default function MeusFIIs() {
                                 src={atualizarDadosIcone}
                                 className="w-8 h-8 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
                                 onClick={()=> atualizarDados()}
+                                onKeyDown={()=>{}}
                             />
                             <Usuario />
                         </div>

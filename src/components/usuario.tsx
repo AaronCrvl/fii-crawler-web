@@ -19,6 +19,7 @@ export default function Usuario() {
     return (
         <div 
             onClick={()=>navPaginaConfigPerfil()}
+            onKeyDown={(()=>{})}
             className="select-none flex ml-auto p-2 bg-indigo-300 rounded-full hover:bg-indigo-400 hover:cursor-pointer dark:bg-yellow-600 hover:dark:bg-yellow-700"
         >            
             <img 

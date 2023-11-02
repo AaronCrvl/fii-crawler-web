@@ -58,8 +58,9 @@ export default function Nav () {
   return(    
     <div className="w-min"> 
       <div
-        onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')}
         className='text-6xl w-min h-full select-none hover:cursor-pointer w-1 h-1 hover:animate-pulse dark:bg-zinc-900'
+        onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')}        
+        onKeyDown={(()=>{})}
       > 
         {tema === 'light' ? '🌅' : '🌑'}
       </div>

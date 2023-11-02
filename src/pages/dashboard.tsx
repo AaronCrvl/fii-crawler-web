@@ -54,6 +54,7 @@ function Dashboard() {
                                 src={atualizarDadosIcone}
                                 className="w-12 h-12 mr-auto hover:cursor-pointer hover:animate-spin dark:invert"
                                 onClick={()=> atualizarDados()}
+                                onKeyDown={()=>{}}
                             />
                             <Usuario />
                         </div>

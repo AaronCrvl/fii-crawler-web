@@ -9,7 +9,7 @@ export type FIIDetalhadoType = {
     nomeCompleto : string,
     cota: string,
     variacao : string,
-    valorizacao : string
+    valorizacao : string,
     historicoDividendos : DividendoType[],
     administrador : AdministradorType,
 }

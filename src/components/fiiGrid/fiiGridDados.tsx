@@ -2,7 +2,9 @@ import React, { CSSProperties } from "react";
 import { FIIType } from "../../types/FIIType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
 import { FIIDetalhadoType } from "../../types/FIIDetalhadoType";
+var uniqid = require('uniqid'); 
 const carteiraIcone = require('../../assets/icons/carteiraIcon.png');
+
 type FIIGridDadosProps = {
     fiis : Array<FIIType | FIIDetalhadoType>,
     callback : Function,
@@ -52,7 +54,7 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                     camposCabecalhoFIIType.map(campo => {
                                         return (
                                             <th
-                                                key={Math.random()}                                                    
+                                                key={uniqid()}                                                    
                                             >{campo}</th>
                                         )
                                     })
@@ -66,7 +68,7 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                     let fii = fundo as FIIType
                                     return (
                                         <tr 
-                                            key={Math.random()} 
+                                            key={uniqid()} 
                                             className="opacity-70 hover:opacity-100 hover:font-bold roudend-lg"
                                         >                            
                                             <div className="btn border-2 p-1">
@@ -101,7 +103,7 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                     camposCabecalhoFIIDetalhadoType.map(campo => {
                                         return (
                                             <th
-                                                key={Math.random()}
+                                                key={uniqid()}
                                             >{campo}</th>
                                         )
                                     })
@@ -115,7 +117,7 @@ export default function FIIGridDados({fiis, callback} : FIIGridDadosProps) {
                                     let fii = fundo as FIIDetalhadoType
                                     return (
                                         <tr 
-                                            key={Math.random()} 
+                                            key={uniqid()} 
                                             onClick={callback(fii.codigoFii)}
                                             className="opacity-70 hover:opacity-100 hover:font-bold"
                                         >                                                                   

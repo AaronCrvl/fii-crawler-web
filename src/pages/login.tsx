@@ -90,7 +90,8 @@ function Login() {
                     className="w-full h-screen bg-white dark:bg-zinc-700"
                 >
                     <div
-                        onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')} 
+                        onKeyDown={()=>{}}
+                        onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')}                         
                         className='text-6xl select-none hover:cursor-pointer mt-10'
                     >
                         {darkMode === 'sim' ? '🌞' : '🌚'}

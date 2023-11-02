@@ -5628,7 +5628,7 @@ class FIIApi implements iFIIApi {
     return new Promise((resolve, reject) => {
       setTimeout(()=> {       
         resolve(
-          new Response(JSON.stringify("Compra de cota realizada com sucesso."), {
+          new Response(JSON.stringify("Venda de cota realizada com sucesso."), {
             status: 200, // Ok
             headers: {
               "Content-Type": "application/json; utf-8",

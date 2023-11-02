@@ -4,9 +4,8 @@ interface CarteiraProps {
     valor : string | number,
 }
 
-function Carteira({valor} : CarteiraProps) {
-    const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
-
+function Carteira({valor} : CarteiraProps) {    
+    
     // Hooks --------------------------->
     const [valorState, setValorState] = React.useState<number | string>()
     React.useEffect(()=> {

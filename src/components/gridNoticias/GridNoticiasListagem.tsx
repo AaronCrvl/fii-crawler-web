@@ -1,11 +1,14 @@
 import React from "react";
 import { NoticiaType } from "../../types/NoticiaType";
+var uniqid = require('uniqid');
+
 type NoticiasProps = {    
     listagem : NoticiaType[]
 }
 
-export default function GridNoticiasListagem({listagem} : NoticiasProps) {            
-    function definirCor({tempoPassado} : NoticiaType ){
+export default function GridNoticiasListagem({listagem} : NoticiasProps) {   
+    // Functions --------------------------->         
+    function definirCor({tempoPassado} : NoticiaType ){          
         if(tempoPassado.includes('segundos')){
             return 'bg-blue-300 dark:bg-zinc-300'
         }
@@ -37,6 +40,7 @@ export default function GridNoticiasListagem({listagem} : NoticiasProps) {
                     listagem.map(noticia => {
                         return(
                             <div 
+                                key={uniqid()}
                                 className={"rounded-lg p-5 text-left mt-10 scale-90 hover:scale-95 hover:cursor-pointer border-4 border-black dark:border-white dark:border-zinc-700"
                                 + definirCor(noticia)
                                 }

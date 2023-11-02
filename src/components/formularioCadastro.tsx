@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { KeyboardEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UsuarioType } from "../types/UsuarioType";
 import FIIApi from "../api/fiiApi";
@@ -26,7 +26,7 @@ export default function FormularioCadastro () {
             || _email.length < 8
             || _senha.length < 8
         ) {
-            throw ('Os dados utilizados sao inválidos. O username deve conter mais de 5 caracteres e a senha e e-mail mais de 8.')            
+            throw new Error('Os dados utilizados sao inválidos. O username deve conter mais de 5 caracteres e a senha e e-mail mais de 8.')            
         }
 
         const usuario : UsuarioType = {
@@ -58,8 +58,8 @@ export default function FormularioCadastro () {
             })
         }
         catch(e) {
-            throw ('Ocorreu um erro  ao criar o usuário. Verifique o console para mais informaçoes.')
             console.log(e)
+            throw new Error('Ocorreu um erro  ao criar o usuário. Verifique o console para mais informaçoes.')            
         }
     }
 
@@ -112,6 +112,11 @@ export default function FormularioCadastro () {
                                     <li 
                                         className="z-10 bg-sky-700 text-white"
                                         onClick={()=> registrarCategoria(categoria)}
+                                        onKeyDown={(event : KeyboardEvent) => {
+                                            if(event.key === 'Enter') {
+                                                // 😃
+                                            }                                            
+                                        }}
                                     >
                                         {categoria}
                                     </li>

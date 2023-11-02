@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
 import { DividendoType } from "../../types/DividendoType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
+var uniqid = require('uniqid'); 
 
-interface FIIFocoHistoricoDividendoProps {
-    lista? : DividendoType[] | undefined    
+type FIIFocoHistoricoDividendoProps = {
+    lista? : DividendoType[]    
 }
 
 export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDividendoProps) {
@@ -13,7 +13,7 @@ export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDivi
     'Dividendo Yeild', 'Rendmento']
     
     const util = new FuncoesDeElementosDOM()
-    const tailwindStyle = 'bg-zinc-500 text-lg text-white border-2 border-radius p-5'
+    const tailwindStyle = 'bg-zinc-500 text-lg text-white border-2 border-radius p-5'    
 
     return(        
         <table className="w-full h-24 border-2 border-zinc-900 cursor-pointer">
@@ -23,7 +23,7 @@ export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDivi
                         camposCabecalho.map(campo => {
                             return (
                                 <th 
-                                    key={Math.random()}
+                                    key={uniqid()}
                                     className="p-2"
                                 >{campo}</th>
                             )
@@ -36,7 +36,7 @@ export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDivi
                     lista?.map(dividendo => {
                         return (
                             <tr 
-                                key={Math.random()}
+                                key={uniqid()}
                                 className="opacity-70 hover:opacity-100 hover:font-bold roudend-lg"
                             >                                                 
                                 {util.linhaGrid(dividendo.dataBase, tailwindStyle)}                            

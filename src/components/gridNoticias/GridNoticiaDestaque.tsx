@@ -1,13 +1,12 @@
 import { NoticiaType } from "../../types/NoticiaType"
 import Carregando from "../carregando"
+var uniqid = require('uniqid'); 
+
 type GridNoticiaDestaqueProps = {
     listagem? : NoticiaType[]
 }
 
-export default function GridNoticiaDestaque({listagem} : GridNoticiaDestaqueProps) {    
-    let divisorLista = listagem?.length
-    divisorLista = divisorLista! / 2
-
+export default function GridNoticiaDestaque({listagem} : GridNoticiaDestaqueProps) {        
     return(        
         <div className="flex w-full h-full rounded-lg p-5">
             {!listagem && <Carregando />}            
@@ -30,10 +29,8 @@ export default function GridNoticiaDestaque({listagem} : GridNoticiaDestaqueProp
                     listagem.map(noticia => {
                         return (
                             <div 
-                                className="rounded-lg p-4 h-48 w-full bg-indigo-200  mb-3 text-left hover:scale-110 hover:cursor-pointer dark:bg-amber-500"
-                                style={{
-                                    backgroundImage : 'url(noticia.url)',                          
-                                }}
+                                key={uniqid()}
+                                className="rounded-lg p-4 h-48 w-full bg-indigo-200  mb-3 text-left hover:scale-110 hover:cursor-pointer dark:bg-amber-500"                                
                             >
                                 <div className="text-black font-bold text-md">{noticia.fonte}</div>
                                 <div className="text-blue-900 font-bold mb-5 text-2xl dark:text-white">{noticia.titulo}</div>
