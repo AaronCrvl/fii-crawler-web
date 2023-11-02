@@ -1,6 +1,6 @@
 import { NoticiaType } from "../../types/NoticiaType"
 import Carregando from "../carregando"
-var uniqid = require('uniqid'); 
+let uniqid = require('uniqid'); 
 
 type GridNoticiaDestaqueProps = {
     listagem? : NoticiaType[]

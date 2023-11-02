@@ -1,6 +1,6 @@
 import { DividendoType } from "../../types/DividendoType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
-var uniqid = require('uniqid'); 
+let uniqid = require('uniqid');
 
 type FIIFocoHistoricoDividendoProps = {
     lista? : DividendoType[]    
@@ -25,7 +25,9 @@ export default function FIIFocoHistoricoDividendo({lista} : FIIFocoHistoricoDivi
                                 <th 
                                     key={uniqid()}
                                     className="p-2"
-                                >{campo}</th>
+                                >
+                                    {campo}
+                                </th>
                             )
                         })
                     }                

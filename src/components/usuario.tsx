@@ -7,6 +7,7 @@ export default function Usuario() {
     const [jwt, setJWT] = useJWT()
     const ehConvidado = jwt === 'convidado' ? true : false             
 
+    // Functions --------------------------->
     function navPaginaConfigPerfil() {
         if(!ehConvidado) {
             nav('/sistemas/configuracoes')            
@@ -16,11 +17,12 @@ export default function Usuario() {
         }        
     }
 
+    // Jsx --------------------------->
     return (
         <div 
-            onClick={()=>navPaginaConfigPerfil()}
-            onKeyDown={(()=>{})}
             className="select-none flex ml-auto p-2 bg-indigo-300 rounded-full hover:bg-indigo-400 hover:cursor-pointer dark:bg-yellow-600 hover:dark:bg-yellow-700"
+            onClick={()=>navPaginaConfigPerfil()}
+            onKeyDown={(()=>{})}            
         >            
             <img 
                 alt='logo usuário'

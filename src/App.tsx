@@ -12,8 +12,7 @@ import { JWTContext } from './components/contexts/JWTContext';
 import CriarConta from './pages/criarConta';
 
 function App() {    
-  const router = new AppRouter().mapRoutes()  
-  const modoEscuro = localStorage.getItem('modoEscuro')?.toString()   
+  const router = new AppRouter().mapRoutes()    
   const jwt = localStorage.getItem('jwt')?.toString()       
 
   return (    

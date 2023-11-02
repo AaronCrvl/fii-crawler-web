@@ -8,7 +8,7 @@ type sideNavOptionsProps = {
 }
 
 function SideNavOptions({navBarOptions, navBarExtraOptions} : sideNavOptionsProps) : JSX.Element {     
-    var uniqid = require('uniqid'); 
+    let uniqid = require('uniqid'); 
 
     // Jsx --------------------------->
     return(

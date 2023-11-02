@@ -15,13 +15,13 @@ export default function Configuracao() {
         // buscar dados do perfil logado
     }, [usuario])
 
-    const [onTipoPerfil, setOnTipoPerfil] = React.useState<Boolean>(false)
-    const [tiposPerfil, setTiposPerfil] = React.useState<string[]>(['Iniciante', 'Investidor Amadoor', 'Investidor Profissional', 'FII GOD'])
+    // const [onTipoPerfil, setOnTipoPerfil] = React.useState<Boolean>(false)
+    // const [tiposPerfil, setTiposPerfil] = React.useState<string[]>(['Iniciante', 'Investidor Amadoor', 'Investidor Profissional', 'FII GOD'])
 
     // Functions --------------------------->
-    function retornarTiposDePerfil() {
+    // function retornarTiposDePerfil() {
 
-    }    
+    // }    
 
 
     // Jsx --------------------------->

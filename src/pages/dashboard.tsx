@@ -32,7 +32,7 @@ function Dashboard() {
                     })  
                 }
                 else {
-
+                    throw new Error("Algum erro ocorreu ao tentar buscar os dados de FII's. Atualize a página.")
                 }              
             })
         }        

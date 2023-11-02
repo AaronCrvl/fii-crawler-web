@@ -2,6 +2,7 @@ import { KeyboardEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UsuarioType } from "../types/UsuarioType";
 import FIIApi from "../api/fiiApi";
+let uniqid = require('uniqid'); 
 
 export default function FormularioCadastro () {    
     const api = new FIIApi()
@@ -110,6 +111,7 @@ export default function FormularioCadastro () {
                             categorias.map(categoria => {
                                 return (
                                     <li 
+                                        key={uniqid()}
                                         className="z-10 bg-sky-700 text-white"
                                         onClick={()=> registrarCategoria(categoria)}
                                         onKeyDown={(event : KeyboardEvent) => {

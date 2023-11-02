@@ -1,6 +1,6 @@
 import React from "react";
 import { navbarOptionProps } from "./navBarOptionProps";
-var uniqid = require('uniqid'); 
+let uniqid = require('uniqid'); 
 
 export default function Option ({optionText, optionIcon, urlPath, convidado, subOptins} : navbarOptionProps) {
     // Hooks --------------------------->

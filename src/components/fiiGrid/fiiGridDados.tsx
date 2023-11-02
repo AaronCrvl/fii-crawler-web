@@ -2,7 +2,7 @@ import React, { CSSProperties } from "react";
 import { FIIType } from "../../types/FIIType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
 import { FIIDetalhadoType } from "../../types/FIIDetalhadoType";
-var uniqid = require('uniqid'); 
+let uniqid = require('uniqid'); 
 const carteiraIcone = require('../../assets/icons/carteiraIcon.png');
 
 type FIIGridDadosProps = {
