@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 import BarChart from "../charts/models/barChart";
-import FIIApi from "../api/fiiApi";
-import { FIIType } from "../types/FIIType";
+import wsFII from "../api/wsFII";
+ import { FIIType } from "../types/generic/FIIType";
 import PieChart from "../charts/models/pieChart";
 import { FIIGrid } from "../components/fiiGrid";
 import FuncoesDeComparacao from "../utils/funcoesDeComparacao";
@@ -21,7 +21,7 @@ function Dashboard() {
     const [dadosFII, setDadosFII] = React.useState<FIIType[]>() 
     React.useEffect(()=> {        
         if(dadosFII === undefined) {
-            new FIIApi().getFIIList()
+            new wsFII().getFIIList()
             .then((respostaApi) => {
                 if(respostaApi.status === 200) {
                     respostaApi.json()

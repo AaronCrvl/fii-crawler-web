@@ -1,11 +1,11 @@
 import React from "react"
 import { GridNoticias } from "../components/gridNoticias"
 import GridNoticiaDestaque from "../components/gridNoticias/GridNoticiaDestaque"
-import { NoticiaType } from "../types/NoticiaType"
-import FIIApi from "../api/fiiApi"
+import { NoticiaType } from "../types/generic/NoticiaType"
+import wsNoticia from "../api/wsNoticias"
 
 function Noticia() {    
-    const api = new FIIApi()
+    const api = new wsNoticia()
 
     // Hooks --------------------------->
     const [noticias, setNoticias]  = React.useState<NoticiaType[]>()

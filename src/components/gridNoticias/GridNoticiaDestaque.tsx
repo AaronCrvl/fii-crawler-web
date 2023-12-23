@@ -1,4 +1,4 @@
-import { NoticiaType } from "../../types/NoticiaType"
+import { NoticiaType } from "../../types/generic/NoticiaType"
 import Carregando from "../carregando"
 let uniqid = require('uniqid'); 
 

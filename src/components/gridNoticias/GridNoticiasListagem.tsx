@@ -1,5 +1,5 @@
 import React from "react";
-import { NoticiaType } from "../../types/NoticiaType";
+import { NoticiaType } from "../../types/generic/NoticiaType";
 var uniqid = require('uniqid');
 
 type NoticiasProps = {    

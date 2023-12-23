@@ -7,7 +7,7 @@ Esta aplicação está sendo feita com muito carinho para todos que assim como e
 Neste projeto tenho dado enfoque para o UX e UI, também trabalho conceitos da web e transmissão de informações entre aplicações via api. O projeto do back end desta aplicação pode ser encontrado [aqui](https://github.com/AaronCrvl/FIICrawler-backend).
 
 ## 🧪 Tecnologias
-O projeto foi desen🌏volvido utilizando as seguintes tecnologias:
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 - [React JS](https://pt-br.legacy.reactjs.org/)    
 - [Atom - Jotai](https://jotai.org/docs/core/atom)

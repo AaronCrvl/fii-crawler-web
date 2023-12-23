@@ -1,12 +1,12 @@
-import { DividendoType } from "../types/DividendoType";
+import { DividendoType } from "../types/generic/DividendoType";
 import FuncoesDeComparacao from "./funcoesDeComparacao";
-import { FIIDetalhadoType } from "../types/FIIDetalhadoType";
+import { FIIDetalhadoType } from "../types/generic/FIIDetalhadoType";
 
 export default class FuncoesDeCalculo {
     funcoesDeComparacao = new FuncoesDeComparacao()
     
     // Funções Privadas    
-    cotaRecalculada(valorCota: number, rendimentoAnalisado : number) : number {
+    private cotaRecalculada(valorCota: number, rendimentoAnalisado : number) : number {
         console.log(`cota = ${valorCota}`)
         console.log(`rendimentoAnalisado = ${rendimentoAnalisado}`)
         console.log(`Valor cota * rendimento = ${valorCota*rendimentoAnalisado}`)

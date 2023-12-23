@@ -1,4 +1,4 @@
-import { FIIType } from "../../types/FIIType"
+import { FIIType } from "../../types/generic/FIIType"
 
 export default function PieChartCotaConfig(lista : FIIType[], objeto? : FIIType, largura? : string, altura? : string) {
     return {    

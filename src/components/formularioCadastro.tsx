@@ -1,12 +1,13 @@
 import { KeyboardEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UsuarioType } from "../types/UsuarioType";
-import FIIApi from "../api/fiiApi";
+import { UsuarioType } from "../types/generic/UsuarioType";
+import wsUsuario from "../api/wsUsuario";
+import { eTipoInvestidor } from "../types/enum/eTipoInvestidor";
 let uniqid = require('uniqid'); 
 
 export default function FormularioCadastro () {    
-    const api = new FIIApi()
-    const categorias = ['Usuário Atípico', 'Especulador👀', 'Investidor Iniciante', 'Investidor Intermediário', 'Investidor Experiente']    
+    const api = new wsUsuario()
+    const categorias = eTipoInvestidor.map(tipo => tipo)   
 
     // Hooks --------------------------->
     const navigate = useNavigate()

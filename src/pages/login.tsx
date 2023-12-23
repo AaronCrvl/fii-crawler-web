@@ -1,14 +1,14 @@
 import React from 'react';
-import FIIApi from '../api/fiiApi';
 import { useNavigate } from 'react-router-dom';
 import useJWT from '../hooks/useJWT';
 import Carregando from '../components/carregando';
 import useTema from '../hooks/useTema';
+import wsUsuario from '../api/wsUsuario';
 const logo = require('../assets/fiiCrawler-logo.png');
 
 function Login() {        
     const [jwt, setJWT] = useJWT()
-    const api =  new FIIApi()       
+    const api =  new wsUsuario()       
     
     // Hooks Personalizados --------------------------->
     const [tema, setTema] = useTema()

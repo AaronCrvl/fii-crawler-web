@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
-import { FIIType } from "../../types/FIIType";
+import { FIIType } from "../../types/generic/FIIType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
-import { FIIDetalhadoType } from "../../types/FIIDetalhadoType";
+import { FIIDetalhadoType } from "../../types/generic/FIIDetalhadoType";
 let uniqid = require('uniqid'); 
 const carteiraIcone = require('../../assets/icons/carteiraIcon.png');
 

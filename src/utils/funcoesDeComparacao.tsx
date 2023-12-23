@@ -1,6 +1,6 @@
-import { DividendoType } from "../types/DividendoType";
-import { FIIType } from "../types/FIIType";
-import { FIIDetalhadoType } from "../types/FIIDetalhadoType";
+import { DividendoType } from "../types/generic/DividendoType";
+ import { FIIType } from "../types/generic/FIIType";
+import { FIIDetalhadoType } from "../types/generic/FIIDetalhadoType";
 
 export default class FuncoesDeComparacao {
     funcaoComparacaoRendimentoMedioAnual(a : FIIType, b : FIIType) {        

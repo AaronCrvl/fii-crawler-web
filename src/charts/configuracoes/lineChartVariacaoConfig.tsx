@@ -1,4 +1,4 @@
-import { FIIDetalhadoType } from "../../types/FIIDetalhadoType"
+import { FIIDetalhadoType } from "../../types/generic/FIIDetalhadoType"
 
 export default function LineChartVariacaoConfig(objeto : FIIDetalhadoType, largura? : string, altura? : string) {
     return {    

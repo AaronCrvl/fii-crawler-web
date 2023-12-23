@@ -1,4 +1,4 @@
-import { DividendoType } from "../../types/DividendoType";
+import { DividendoType } from "../../types/generic/DividendoType";
 import FuncoesDeElementosDOM from "../../utils/funcoesDeElementosDOM";
 let uniqid = require('uniqid');
 
