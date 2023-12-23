@@ -1,5 +1,5 @@
 import React from "react";
-import WsFII from "../api/WsFII";
+import wsFII from "../api/wsFII";
 import { FIIDetalhadoType } from "../types/generic/FIIDetalhadoType";
 import { FIIFocoGrid } from "../components/fiiFocoGrid";
 import Carregando from "../components/carregando";
@@ -15,7 +15,7 @@ const atualizarDadosIcone = require('../assets/icons/atualizarIcon.png')
 export default function MeusFIIs() {
     const [jwt, setJWT] = useJWT()        
     const ehConvidado = jwt === 'convidado' ? true : false
-    const api = new WsFII()        
+    const api = new wsFII()        
     const util_FuncoesCalculo = new FuncoesDeCalculo()
 
     // Hooks --------------------------->   

@@ -1,11 +1,11 @@
 import React from "react";
-import WsFII from "../api/WsFII";
+import wsFII from "../api/wsFII";
 import useJWT from "../hooks/useJWT";
 import { eTipoInvestidor } from "../types/enum/eTipoInvestidor";
 const usuarioLogo = require('../assets/icons/usuarioIcone.png')
 
 export default function Configuracao() {
-    const api = new WsFII()
+    const api = new wsFII()
     const [jwt, setJWT] = useJWT()   
     const categorias = eTipoInvestidor.map(tipo => tipo)           
 
