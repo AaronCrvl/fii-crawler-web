@@ -3,8 +3,8 @@ import { UsuarioType } from '../types/generic/UsuarioType';
 
 export default class wsUsuario implements iApi {
   // Propriedades da Interface --------------------------->
-  caminhoEndpoint : string = "fii"
-  tipoDeRequisicaoPemitido : string[] = ['GET', 'POST', 'PUT', 'DELETE']
+  caminhoEndpoint : string = "/v1/usuario"
+  tipoDeRequisicaoPemitido : string[] = ['GET', 'POST']
   necessitaAutorizacao : boolean =  true     
 
   // Endpoints do Usuário --------------------------->
