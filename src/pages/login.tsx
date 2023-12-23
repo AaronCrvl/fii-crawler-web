@@ -90,6 +90,7 @@ function Login() {
                     className="w-full h-screen bg-white dark:bg-zinc-700"
                 >
                     <div
+                        role='button'
                         onKeyDown={()=>{}}
                         onClick={()=> setTema(tema === 'light' ? 'dark' : 'light')}                         
                         className='text-6xl select-none hover:cursor-pointer mt-10'
@@ -110,7 +111,6 @@ function Login() {
                                 placeholder="Entre com seu e-mail"
                                 className='rounded-full w-96 bg-zinc-700 text-white p-5 hover:bg-zinc-600 focus:bg-white focus:text-black dark:bg-zinc-500 dark:text-white'
                             />
-
                             <input                         
                                 ref={senha}                                
                                 type="text" 

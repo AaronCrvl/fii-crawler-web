@@ -4,7 +4,7 @@ import { FIIType } from '../types/generic/FIIType';
 
 export default class wsFII implements iApi {
   // Propriedades da Interface  --------------------------->
-  caminhoEndpoint : string = "fii"
+  caminhoEndpoint : string = "/v1/fii"
   tipoDeRequisicaoPemitido : string[] = ['GET', 'POST', 'PUT', 'DELETE']
   necessitaAutorizacao : boolean =  true    
 

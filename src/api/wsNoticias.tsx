@@ -3,9 +3,9 @@ import { NoticiaType } from '../types/generic/NoticiaType';
 
 export default class wsNoticia implements iApi {
   // Propriedades da Interface  --------------------------->
-  caminhoEndpoint : string = "fii"
-  tipoDeRequisicaoPemitido : string[] = ['GET', 'POST', 'PUT', 'DELETE']
-  necessitaAutorizacao : boolean =  true    
+  caminhoEndpoint : string = "/v1/fii"
+  tipoDeRequisicaoPemitido : string[] = ['GET']
+  necessitaAutorizacao : boolean =  false    
 
   // Endpoints de Notícias --------------------------->
   private noticiasJson : NoticiaType[] = [

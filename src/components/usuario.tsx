@@ -22,7 +22,8 @@ export default function Usuario() {
         <div 
             className="select-none flex ml-auto p-2 bg-indigo-300 rounded-full hover:bg-indigo-400 hover:cursor-pointer dark:bg-yellow-600 hover:dark:bg-yellow-700"
             onClick={()=>navPaginaConfigPerfil()}
-            onKeyDown={(()=>{})}            
+            onKeyDown={(()=>{})}     
+            role="button"       
         >            
             <img 
                 alt='logo usuário'

@@ -1,12 +1,12 @@
 import { KeyboardEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UsuarioType } from "../types/generic/UsuarioType";
-import wsUsuario from "../api/wsUsuario";
+import WsUsuario from "../api/WsUsuario";
 import { eTipoInvestidor } from "../types/enum/eTipoInvestidor";
 let uniqid = require('uniqid'); 
 
 export default function FormularioCadastro () {    
-    const api = new wsUsuario()
+    const api = new WsUsuario()
     const categorias = eTipoInvestidor.map(tipo => tipo)   
 
     // Hooks --------------------------->

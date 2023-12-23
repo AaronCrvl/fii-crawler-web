@@ -1,11 +1,11 @@
 import React from "react";
-import wsFII from "../api/wsFII";
+import WsFII from "../api/WsFII";
 import useJWT from "../hooks/useJWT";
 import { eTipoInvestidor } from "../types/enum/eTipoInvestidor";
 const usuarioLogo = require('../assets/icons/usuarioIcone.png')
 
 export default function Configuracao() {
-    const api = new wsFII()
+    const api = new WsFII()
     const [jwt, setJWT] = useJWT()   
     const categorias = eTipoInvestidor.map(tipo => tipo)           
 
@@ -58,6 +58,7 @@ export default function Configuracao() {
                                                 <li 
                                                     className="text-center p-2 text-black hover:bg-zinc-300 dark:text-white dark:hover:bg-purple-300"
                                                     onClick={()=>setMostrarTipoInvestidor(!mostrarTipoInvestidor)}
+                                                    onKeyUp={()=>setMostrarTipoInvestidor(!mostrarTipoInvestidor)}
                                                 >
                                                     {tipoInvestidor}
                                                 </li>

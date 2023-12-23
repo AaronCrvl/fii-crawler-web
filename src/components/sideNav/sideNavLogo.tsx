@@ -16,6 +16,7 @@ export default function SideNavLogo({src} : sideNavLogoProps){
     // Jsx --------------------------->
     return (        
         <div 
+            role="button"
             className="mt-5 p-10 select-none hover:cursor-pointer"
             onClick={()=>reload()}
             onKeyDown={(()=>{})}
